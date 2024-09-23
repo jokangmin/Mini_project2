@@ -50,38 +50,35 @@
 						<input type="radio" name = "gender" id = "gender_f" value = "F" />
 						<label for ="gender">여자</label>
 					</div>
-					<div class="custom-form-group2">
-						<input type ="text" class="custom-form-control2" name = "email1" id="email1" placeholder="이메일">
-						<label for="email1" class="custom-label2">이메일</label>
+					
+					<div class="custom-form-group2-email">
+					    <div class="email-input-group">
+					        <input type="text" class="custom-form-control2" name="email1" id="email1" placeholder="이메일" />
+					        <span id="email_span">@</span>
+					        <input type="text" class="custom-form-control2" name="email2" id="email2" placeholder="이메일2" />
+					    </div>
+					    <select name="email2_sel" id="email2_sel" class="custom-form-control2">
+					        <optgroup label="이메일 형식 지정">
+					            <option value="">직접입력</option>
+					            <option value="naver.com">naver.com</option>
+					            <option value="gmail.com">gmail.com</option>
+					            <option value="hanmail.com">hanmail.com</option>
+					        </optgroup>
+					    </select>
 					</div>
+					
 					<div class="custom-form-group2">
-						<input type ="text" class="custom-form-control2" name = "email2" id="email2" placeholder="이메일2"/>
-						<label for="email2" class="custom-label2">이메일2</label>
-					</div>
-					<div class="custom-form-group2">
-						<select name = "email2_sel" id = "email2_sel" class="custom-form-control2">
-							<optgroup label="이메일 형식 지정">
-								<option value = "" >직접입력</option>
-								<option value = "naver.com">naver.com</option>
-								<option value = "gmail.com">gmail.com</option>
-								<option value = "hanmail.com">hanmail.com</option>
-							</optgroup>
-						</select>
-					</div>
-					<div class="custom-form-group2">
-						<select name = "tel1" id = "tel1" class="custom-form-control2">
-								<optgroup>
-									<option value = "010" selected>010</option>
-									<option value = "011">011</option>
-									<option value = "019">019</option>
-								</optgroup>
-						</select>
-					</div>
-					<div class="custom-form-group2">
-						<input type ="text" name = "tel2" id="tel2" size="5" class="custom-form-control2"/>
-					</div>
-					<div class="custom-form-group2">
-						<input type ="text" name = "tel3" id="tel3" size="5"class="custom-form-control2" />
+					    <select name="tel1" id="tel1">
+					        <optgroup>
+					            <option value="010" selected>010</option>
+					            <option value="011">011</option>
+					            <option value="019">019</option>
+					        </optgroup>
+					    </select>
+					    <span id="tel_span">-</span>
+					    <input type="text" name="tel2" id="tel2" size="5" maxlength="4" placeholder="XXXX" />
+					    <span id="tel_span">-</span>
+					    <input type="text" name="tel3" id="tel3" size="5" maxlength="4" placeholder="XXXX" />
 					</div>
 					
 					<div class="loader">
@@ -90,7 +87,7 @@
 				<div class="custom-form-group2">
                     <input type="text" class="custom-form-control2" id="zipcode" name = "zipcode" placeholder="우편번호" readonly>
                     <label for="zipcode" class="custom-label2">우편번호</label>
-                    <button type="button" onclick="zipcode_button()">우편번호 검색</button>
+                    <button id="zipcode_button" type="button" onclick="zipcode_button()">우편번호 검색</button>
                 </div>
                 <div class="custom-form-group2">
                     <input type="text" class="custom-form-control2" name = "addr1" id="addr1" placeholder="주소" readonly>

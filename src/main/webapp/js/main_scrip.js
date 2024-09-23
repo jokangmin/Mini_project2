@@ -49,6 +49,6 @@ $(function(){
     }
 	
 	$('.custom-card2').click(function(){
-		window.location.href = 'travel4.html';
+		window.location.href = '/ODIGA_workspace/travel/travel4.do';
 	});
 });

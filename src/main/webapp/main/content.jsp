@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>     
+<c:set var="context" value="${ pageContext.request.contextPath }" /> 
 <br/>
 <br/>
 <div class="banner_img">
@@ -19,7 +21,7 @@
                 <div class="card-body">
                     <h5 class="card-title">방콕</h5>
                     <p class="card-text">전 세계 여행자들이 사랑하는 도시, 천사의 도시라고도 불려지는 매력적인 방콕에서 역사적이고 아름다운 여행을 즐겨보세요.</p>
-                    <a href="fly1.html" class="btn">최저가 확인</a>
+                    <a href="${ context }/flyTour/fly1.do" class="btn">최저가 확인</a>
                 </div>
             </div>
             <div class="card">
@@ -27,7 +29,7 @@
                 <div class="card-body">
                     <h5 class="card-title">다낭</h5>
                     <p class="card-text">베트남에서 가장 큰 도시 중 하나인 다낭은 아름다운 해변과 오래된 유적지가 많고 느긋한 분위기를 만끽하실 수 있는 여행을 즐겨보세요.</p>
-                    <a href="fly1.html" class="btn">최저가 확인</a>
+                    <a href="${ context }/flyTour/fly1.do" class="btn">최저가 확인</a>
                 </div>
             </div>
             <div class="card">
@@ -35,7 +37,7 @@
                 <div class="card-body">
                     <h5 class="card-title">도쿄</h5>
                     <p class="card-text">도쿄는 전통과 현대가 조화를 이루는 매력적인 도시, 도시의 전경과 역사를 체험하고 최신 패션과 다양한 음식을 즐겨보세요.</p>
-                    <a href="fly1.html" class="btn">최저가 확인</a>
+                    <a href="${ context }/flyTour/fly1.do" class="btn">최저가 확인</a>
                 </div>
             </div>
             <div class="card">
@@ -43,7 +45,7 @@
                 <div class="card-body">
                     <h5 class="card-title">하와이</h5>
                     <p class="card-text">푸른 바다와 화산, 그리고 넓고 매력적인 해변을 갖춘 하와이에서 일상의 스트레스를 날려버리고 힐링같은 평온한 시간을 보내세요.</p>
-                    <a href="fly1.html" class="btn">최저가 확인</a>
+                    <a href="${ context }/flyTour/fly1.do" class="btn">최저가 확인</a>
                 </div>
             </div>
             <div class="card">
@@ -51,7 +53,7 @@
                 <div class="card-body">
                     <h5 class="card-title">파리</h5>
                     <p class="card-text">세계적인 문화와 건축물 그리고 예술의 중심지, 파리에서 꿈과 환상같은 로맨틱한 여행을 즐기며 역사적인 명소와 미식을 직접 경험해 보세요.</p>
-                    <a href="fly1.html" class="btn">최저가 확인</a>
+                    <a href="${ context }/flyTour/fly1.do" class="btn">최저가 확인</a>
                 </div>
             </div>
             <div class="card">
@@ -59,7 +61,7 @@
                 <div class="card-body">
                     <h5 class="card-title">코타키나발루</h5>
                     <p class="card-text">말레이시아의 숨겨진 보석, 코타키나발루에서 스쿠버다이빙과 산호초 그리고 아름다운 해변과 산악 풍경을 즐기며 휴식을 취하세요.</p>
-                    <a href="fly1.html" class="btn">최저가 확인</a>
+                    <a href="${ context }/flyTour/fly1.do" class="btn">최저가 확인</a>
                 </div>
             </div>
             <div class="card">
@@ -67,7 +69,7 @@
                 <div class="card-body">
                     <h5 class="card-title">푸켓</h5>
                     <p class="card-text">푸켓은 태국의 아름다운 해변과 풍부한 문화가 가득한 섬, 트로피컬한 분위기와 다양한 액티비티를 직접 체험하며 즐겨보세요.</p>
-                    <a href="fly1.html" class="btn">최저가 확인</a>
+                    <a href="${ context }/flyTour/fly1.do" class="btn">최저가 확인</a>
                 </div>
             </div>
         </div>
