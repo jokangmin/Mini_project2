@@ -1,0 +1,102 @@
+@charset "UTF-8";
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 항공권 검색 섹션 */
+.search-box {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* 열 방향으로 정렬 */
+    gap: 10px;
+}
+
+.search-box .top-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input[type="text"], 
+.search-box select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: calc(50% - 10px); /* 50% 너비에서 간격을 뺀 값 */
+}
+
+/* 날짜 입력 필드 스타일링 */
+.date-input {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: calc(50% - 10px); /* 50% 너비에서 간격을 뺀 값 */
+}
+
+.search-box button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: flex-start; /* 버튼을 왼쪽에 정렬 */
+}
+
+.search-box button:hover {
+    background-color: #0056b3;
+}
+
+/* 항공권 리스트 */
+.flight-list {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.flight-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.flight-card:last-child {
+    border-bottom: none;
+}
+
+.flight-details {
+    display: flex;
+    align-items: center;
+}
+
+.flight-details img {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.flight-info {
+    font-size: 14px;
+}
+
+.flight-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+}

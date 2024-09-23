@@ -1,0 +1,76 @@
+@charset "UTF-8";
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 투어 패스 상품 리스트 */
+.tour-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.tour-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.tour-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.tour-info {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tour-info h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.tour-info p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.tour-info strong {
+    font-size: 18px;
+    color: #007bff;
+}
+
+.buy-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.buy-btn:hover {
+    background-color: #0056b3;
+}
+
+.tour-card:hover {
+    transform: translateY(-5px);
+}

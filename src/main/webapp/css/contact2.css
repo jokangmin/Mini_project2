@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/* 기본 스타일 */
+
+
+header h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #007aff;
+    margin-bottom: 20px;
+}
+
+
+#timeline_img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    position: relative;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+/* 연혁 섹션 스타일 */
+.timeline {
+    border-left: 3px solid #007aff;
+    padding-left: 20px;
+     max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event {
+    margin-bottom: 40px;
+}
+
+.event h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+    position: relative;
+}
+
+.event h2::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #007aff;
+    border-radius: 50%;
+    position: absolute;
+    left: -25px;
+    top: 32px;
+}
+
+.event p {
+    font-size: 1em;
+    color: #666;
+    padding-left: 10px;
+}
