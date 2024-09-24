@@ -115,7 +115,6 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="../js/postapi.js"></script>
-<script type="text/javascript" src="../js/signup.js"></script>
 <script type="text/javascript">
 $(function(){
 	let pw_state = false;
@@ -123,6 +122,14 @@ $(function(){
 	$('#check_pw').empty();
 	$('#check_id').empty();
 	$('#check_name').empty();
+	
+	$('ul.main_menu > li > .nav_link').hide(); //숨기기
+	
+	$('ul.main_menu > li').hover(function(){ //마우스를 올렸을떄 슬라이드 다운
+		$(this).find('.nav_link').slideDown(300);
+	},function(){
+		$('.nav_link').slideUp(400);
+	});
 	
 	$('#email2_sel').change(function(){
 		var sel_value = $('#email2_sel').val();
@@ -171,7 +178,7 @@ $(function(){
 		else{
 			$.ajax({
 				type : 'get',              
-				url : '/project_ODIGA/member/checkId.do', 
+				url : '/ODIGA_workspace/member/checkId.do', 
 				data: { id : $('#id').val() }, 
 				dataType : 'text',      
 				success : function(data) {
