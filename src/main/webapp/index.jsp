@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome to ODIGA!</title>
-<link rel="stylesheet" href="../css/firstPage_ODIGA.css">
+<link rel="stylesheet" href="./css/firstPage_ODIGA.css">
 </head>
 <body>
 	<div class="background"></div>
     <div class="container">
         <div class="logo">
-            <img src="../image/odiga_logo-removebg-preview.png" alt="ODIGA Logo">
+            <img src="./image/odiga_logo-removebg-preview.png" alt="ODIGA Logo">
         </div>
         <div class="message">
             <p class="loading-text">Welcome to ODIGA!</p>

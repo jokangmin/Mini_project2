@@ -36,12 +36,12 @@
 					    <div id="user_check" style="color: blue;"></div>
 					</div>
 					<div class="custom-form-group2">
-					    <input type="password" class="custom-form-control2" id="customFloatingPassword2" name = "pwd" placeholder="비밀번호">
-					    <label for="customFloatingPassword2" class="custom-label2">비밀번호</label>
+    					<input type="password" class="custom-form-control2" id="pwd" name="pwd" placeholder="비밀번호">
+    					<label for="pwd" class="custom-label2">비밀번호</label>
 					</div>
 					<div class="custom-form-group2">
-					    <input type="password" class="custom-form-control2" id="customFloatingPassword2" name = "pwd_check" placeholder="비밀번호 재확인">
-					    <label for="customFloatingPassword2" class="custom-label2">비밀번호 재확인</label>
+					    <input type="password" class="custom-form-control2" id="pwd_check" name="pwd_check" placeholder="비밀번호 재확인">
+					    <label for="pwd_check" class="custom-label2">비밀번호 재확인</label>
 					    <span id="check_pw"></span>
 					</div>
 					<div class="custom-form-group2">
@@ -87,7 +87,7 @@
 				<div class="custom-form-group2">
                     <input type="text" class="custom-form-control2" id="zipcode" name = "zipcode" placeholder="우편번호" readonly>
                     <label for="zipcode" class="custom-label2">우편번호</label>
-                    <button id="zipcode_button" type="button" onclick="zipcode_button()">우편번호 검색</button>
+                    <button type="button" onclick="zipcode_button()">우편번호 검색</button>
                 </div>
                 <div class="custom-form-group2">
                     <input type="text" class="custom-form-control2" name = "addr1" id="addr1" placeholder="주소" readonly>
@@ -155,19 +155,20 @@ $(function(){
 	});
 	
 	$('#pwd_check').focusout(function(){
-		$('#check_pw').empty();
-		var my_pwd = $('#pwd').val();
-		if($('#pwd_check').val() != my_pwd){
-			pw_state = false;
-			$('#check_pw').text(" 비밀번호가 일치하지 않습니다. ");
-		}
-		else{
-			pw_state = true;
-		}
+	    $('#check_pw').empty();
+	    var my_pwd = $('#pwd').val();
+	    if($('#pwd_check').val() != my_pwd){
+	        pw_state = false;
+	        $('#check_pw').text(" 비밀번호가 일치하지 않습니다. ");
+	    }
+	    else{
+	        pw_state = true;
+	        $('#check_pw').text(" 비밀번호가 일치합니다. ");
+	    }
 	});
-	
+
 	$('#pwd_check').focus(function(){
-		$('#check_pw').empty();
+	    $('#check_pw').empty();
 	});
 
 	$('#id').focusout(function(){
