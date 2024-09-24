@@ -6,7 +6,8 @@
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
-    margin: 0 950px;
+    margin: 0 auto;
+    width: 700px;
 }
 
 #update_field{
