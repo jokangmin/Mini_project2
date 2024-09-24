@@ -179,7 +179,7 @@ $(function(){
 		else{
 			$.ajax({
 				type : 'get',              
-				url : '/ODIGA_workspace/member/checkId.do', 
+				url : '${ pageContext.request.contextPath }/member/checkId.do', 
 				data: { id : $('#id').val() }, 
 				dataType : 'text',      
 				success : function(data) {
