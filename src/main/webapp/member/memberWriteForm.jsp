@@ -25,12 +25,12 @@
 				</div>
 				<div id="signup_input">
 					<div class="custom-form-group2">
-						<input type="text" class="custom-form-control2" id="customFloatingName2" name = "name" placeholder="이름">
+						<input type="text" class="custom-form-control2" id="name" name = "name" placeholder="이름">
 					    <label for="customFloatingName2" class="custom-label2">이름</label>
 					    <span id="check_name"></span>
 					</div>
 					<div class="custom-form-group2">
-					    <input type="text" class="custom-form-control2" id="customFloatingUsername2" name = "id" placeholder="아이디">
+					    <input type="text" class="custom-form-control2" id="id" name = "id" placeholder="아이디">
 					    <label for="customFloatingUsername2" class="custom-label2">아이디</label>
 					    <span id="check_id"></span>
 					    <div id="user_check" style="color: blue;"></div>
@@ -171,7 +171,7 @@ $(function(){
 		else{
 			$.ajax({
 				type : 'get',              
-				url : '${ pageContext.request.contextPath }/member/checkId.do', 
+				url : '/project_ODIGA/member/checkId.do', 
 				data: { id : $('#id').val() }, 
 				dataType : 'text',      
 				success : function(data) {
