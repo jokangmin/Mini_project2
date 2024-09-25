@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Admin Member</title>
 <link rel="stylesheet" href="../css/main.css">
-<link rel="stylesheet" href="../css/adminMember.css">
 <link rel="icon" href="../image/odiga_logo.jpeg" type="../image/gif" />
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 </head>

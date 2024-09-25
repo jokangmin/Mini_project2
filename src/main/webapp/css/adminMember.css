@@ -1,0 +1,58 @@
+#listTable {
+    width: 80%;
+    margin: 20px auto;
+    padding: 0;
+    box-shadow: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.memberBlock_Btn, .memberUnblock_Btn {
+    display: block;
+    width: 100px;
+    margin: 5px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.memberBlock_Btn {
+    background-color: #ff4c4c;
+    color: white;
+}
+
+.memberUnblock_Btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.memberBlock_Btn:hover {
+    background-color: #e60000;
+}
+
+.memberUnblock_Btn:hover {
+    background-color: #388e3c;
+}
