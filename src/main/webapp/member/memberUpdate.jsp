@@ -94,7 +94,7 @@
                 <div align="center">
                     <input type="button" value="회원정보수정" id="update_button"/>
                     <input type="reset" value="다시 입력" id="reset_button"/>
-                    <input type="button" value="회원탈퇴" id="delete_button"/>
+                    <input type="button" value="회원탈퇴" id="delete_button" onclick="delMem_button()"/>
                 </div>
             </fieldset>
             <input type="hidden" id="id_state" name="id_state" value="false">
@@ -163,6 +163,40 @@ $(function(){
             else{
                 $('#update_form').submit();    
             }
+        }
+    });
+    
+    $('#delete_button').click(function() {
+        var pwd = prompt("비밀번호를 입력하세요.");
+
+        if (pwd != null && pwd != "") {
+            $.ajax({
+                type: 'POST',
+                url: '${ pageContext.request.contextPath }/member/checkPwd.do',
+                data: { pwd: pwd },
+                success: function(result) {
+                    if (result === "success") {
+                        if (confirm("정말로 탈퇴하시겠습니까?")) {
+                            $.ajax({
+                                type: 'POST',
+                                url: '${ pageContext.request.contextPath }/member/deleteMember.do',
+                                success: function() {
+                                    alert("회원탈퇴가 완료되었습니다.");
+                                    location.href = "${ pageContext.request.contextPath }/index/index_main.do";
+                                },
+                                error: function() {
+                                    alert("탈퇴 처리 중 오류가 발생했습니다.");
+                                }
+                            });
+                        }
+                    } else {
+                        alert("비밀번호가 일치하지 않습니다.");
+                    }
+                },
+                error: function() {
+                    alert("비밀번호 확인 중 오류가 발생했습니다.");
+                }
+            });
         }
     });
     

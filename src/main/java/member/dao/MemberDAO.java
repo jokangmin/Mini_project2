@@ -80,4 +80,21 @@ public class MemberDAO {
 		sqlSession.close();
        
 	}
+
+	public String getPwdById(String id) { //회원 삭제
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		String pwd = sqlSession.selectOne("memberSQL.getPwdById", id);
+		sqlSession.close();
+		
+		return pwd;
+	}
+
+	public int deleteMem(String id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		int result = sqlSession.delete("memberSQL.deleteMem", id);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return result;
+	}
 }

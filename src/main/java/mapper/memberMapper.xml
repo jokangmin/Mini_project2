@@ -38,4 +38,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, logtime=sysdate where id=#{id}
 	</update>
 	
+	<select id="getPwdById" parameterType="String" resultType="String">
+		select pwd from odigaMember where id = #{id}
+	</select>
+	
+	<delete id="deleteMem" parameterType="String">
+		delete from odigaMember where id = #{id}
+	</delete>
 </mapper>

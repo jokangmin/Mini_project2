@@ -117,9 +117,9 @@ public class ControlServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		/*
-		 * if(view.equals("none")) { return; }
-		 */
+		
+		if(view.equals("none")) { return; }
+		 
 		
 		//forward
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
