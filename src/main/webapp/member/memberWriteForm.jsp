@@ -66,6 +66,20 @@
 					        </optgroup>
 					    </select>
 					</div>
+						<!--  이메일 인증 번호 --> 
+					<button type="button" onclick="sendEmail();">이메일 인증발송</button>		
+					<div id="verificationSection" >
+				    <h2>인증번호 확인</h2>
+				    <label for="inputCode">인증번호 입력:</label>
+				    <br>
+				    <br>
+				    <input type="text" id="inputCode" class="custom-form-control2">
+				    <br>
+				    <br>
+				    <button  type="button" onclick="verifyCode();">확인</button>
+				  
+					</div>
+					<br>
 					
 					<div class="custom-form-group2">
 					    <select name="tel1" id="tel1">
@@ -109,12 +123,13 @@
 			<input type="hidden" id="id_state" name="id_state" value="false">
 		</form>
 	</div>
-	<!--  footer -->    
+	<!--  footer -->   
     <jsp:include page="../main/footer.jsp" />
     
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="../js/postapi.js"></script>
+<script type="text/javascript" src="../js/mail.js"></script>
 <script type="text/javascript">
 $(function(){
 	let pw_state = false;
@@ -206,6 +221,12 @@ $(function(){
 	});
 	
 	$('#write_button').click(function(){
+		
+		if(!$('#inputCode').val()){
+			alert("이메일 인증을 해주세요");
+			return;
+		}
+		
 		if(!$('#name').val() && !$('#id').val() && !$('#pwd').val() && !$('#email1').val() 
 			&& !$('#email2').val() && !$('#tel2').val() && !$('#tel3').val() && !$('#zipcode').val()
 			&& !$('#addr1').val() && !$('#addr2').val() && !$('#pwd_check').val()){
