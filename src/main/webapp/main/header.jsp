@@ -55,6 +55,28 @@
 				</li>
 			</ul>
 		</li>
+		
+		<!-- -------------------------- -->
+		
+		<c:if test="${ sessionScope.id == 'admin' }">
+		<li clss="nav">
+			<a href="${ context }/admin/adminMember.do">Admin Area</a>
+			<ul class="nav_link">
+				<li>
+					<a href="${ context }/admin/adminMember.do">회원 관리</a>
+				</li>
+				<li>
+					<a href="#">게시판 관리</a>
+				</li>
+				<li>
+					<a href="#">문의 게시판 관리</a>
+				</li>
+				<li>
+					<a href="#">배너 이미지 관리</a>
+				</li>
+			</ul>
+		</li>
+		</c:if>
 	</ul>&nbsp;&nbsp;
 	<div class="auth-buttons">
 		<c:if test="${ sessionScope.id != null }">
@@ -65,6 +87,6 @@
 	 		<a href="${ context }/member/memberWriteForm.do" ><img src="../image/signup_icon.png" alt="signup_icon" width="23" height="23"/></a>
 	     	<a href="${ context }/member/memberLoginForm.do" class="btn-8"><img src="../image/login_icon.png" alt="login_icon" width="23" height="23"/></a>
 		</c:if>
-	</div>
+	</div>  
 </div>
 <div id="menu_line"></div>

@@ -22,6 +22,7 @@
  	
  	<mappers>
  		<mapper resource="mapper/memberMapper.xml"/>
+ 		<mapper resource="mapper/adminMapper.xml"/>
  	</mappers>
  </configuration>
  

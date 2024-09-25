@@ -15,6 +15,8 @@ public class MemberDTO {
 	private String zipcode;
 	private String addr1;
 	private String addr2;
+	private int report_count;
+	private String blocked;
 	private Date logtime;
 	
 	public MemberDTO() {}
@@ -140,6 +142,26 @@ public class MemberDTO {
 
 	public void setLogtime(Date logtime) {
 		this.logtime = logtime;
+	}
+
+
+	public int getReport_count() {
+		return report_count;
+	}
+
+
+	public void setReport_count(int report_count) {
+		this.report_count = report_count;
+	}
+
+
+	public String getBlocked() {
+		return blocked;
+	}
+
+
+	public void setBlocked(String blocked) {
+		this.blocked = blocked;
 	}
 	
 	

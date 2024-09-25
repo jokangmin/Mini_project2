@@ -3,6 +3,7 @@ package member.dao;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
@@ -21,7 +22,7 @@ public class MemberDAO {
         return memberDAO;
     }
 
-    private MemberDAO() {
+    public MemberDAO() {
         try {
         	Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
@@ -96,5 +97,34 @@ public class MemberDAO {
 		sqlSession.close();
 		
 		return result;
+	}
+
+	public List<MemberDTO> getAllMembers() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<MemberDTO> memberList = sqlSession.selectList("adminSQL.getAllMembers");
+	    
+	    sqlSession.close();
+	    
+	    return memberList;
+	}
+
+	public boolean blockMember(String memberId) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		int result = sqlSession.update("adminSQL.blockMember", memberId);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return result > 0;
+	}
+
+	public boolean unblockMember(String memberId) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		int result = sqlSession.update("adminSQL.unblockMember", memberId);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return result > 0;
 	}
 }
