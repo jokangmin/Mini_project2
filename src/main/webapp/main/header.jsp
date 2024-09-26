@@ -80,6 +80,7 @@
 	</ul>&nbsp;&nbsp;
 	<div class="auth-buttons">
 		<c:if test="${ sessionScope.id != null }">
+			<a href="${ context }/qna/qnaListForm.do?pg=1"><img src="../image/qna_board.png" alt="qna_icon" width="23" height="23"/></a>
 	 		<a href="${ context }/member/logout.do" id="logout"><img src="../image/logout-icon.png" alt="logout_icon" width="23" height="23"/></a>
 			<a href="${ context }/member/memberUpdate.do"><img src="../image/member_icon.png" alt="member_icon" width="23" height="23"/></a>
 		</c:if>

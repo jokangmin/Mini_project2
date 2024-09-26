@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+/* 전체 페이지 스타일 */
+body.main_window {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+/* 헤더와 푸터 스타일 */
+header, footer {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+/* 게시판 콘텐츠 스타일 */
+#qna_board_list_content_div {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 0 auto;
+    width: 860px; /* 중앙 정렬을 위해 폭 설정 */
+}
+
+/* 제목 스타일 */
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+/* 테이블 스타일 */
+#qna_board_list_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: none; /* 테이블 자체의 테두리 제거 */
+}
+
+#qna_board_list_table th, #qna_board_list_table td {
+    padding: 10px;
+    text-align: center;
+    border: none; /* 셀의 테두리 제거 */
+}
+
+/* 기존의 스타일은 유지하되, 테두리 속성만 제거 */
+#qna_board_list_table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+#qna_board_list_table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+
+/* 페이징 스타일 */
+#paging_div {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* 버튼 스타일 */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6rem; /* 둥근 모서리 */
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    font-size: 1rem;
+    margin-top: 10px; /* 버튼 간격 추가 */
+    width: 100%; /* 버튼을 전체 폭으로 설정 */
+}
+
+button:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+#write_button {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 6rem;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    width: 11%;
+}
+
+/* 아코디언 메뉴 */
+.title {
+    display: flex;
+    justify-content: space-between; /* 왼쪽과 오른쪽 끝으로 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.title .toggle-plus {
+    margin-left: auto; /* 이미지를 오른쪽 끝으로 밀어냄 */
+    cursor: pointer;
+}
+
+/* 아코디언 안에 답글 작성 버튼 */
+#AdminWrite_button {
+    padding: 5px; /* 버튼의 패딩을 줄여서 크기 조절 */
+    font-size: 0.9rem; /* 글자 크기를 줄임 */
+    background-color: #007bff; /* 배경색 */
+    color: white; /* 글자색 */
+    border: none; /* 테두리 없음 */
+    border-radius: 6rem; /* 모서리 둥글게 */
+    cursor: pointer; /* 커서 모양 변경 */
+    margin-top: 5px; /* 위쪽 여백 */
+    width: 10%;
+}
+
+#AdminWrite_button:hover {
+    background-color: #0056b3; /* hover 시 배경색 변경 */
+}
+
+/* 오른쪽 정렬을 위한 스타일 */
+.align-right {
+    text-align: right; /* 오른쪽 정렬 */
+}

@@ -7,6 +7,7 @@
  	<typeAliases>
  		<typeAlias type="member.bean.MemberDTO" alias="member"/>
  		<typeAlias type="foodreview.bean.FoodreviewDTO" alias="foodreview"/>
+ 		<typeAlias type="qna.bean.QnaDTO" alias="qna"/>
  	</typeAliases>
  	
  	<environments default="development">
@@ -25,6 +26,7 @@
  		<mapper resource="mapper/memberMapper.xml"/>
  		<mapper resource="mapper/foodreviewMapper.xml"/>
  		<mapper resource="mapper/adminMapper.xml"/>
+ 		<mapper resource="mapper/qnaMapper.xml"/>
  	</mappers>
  </configuration>
  
