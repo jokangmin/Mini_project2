@@ -1,0 +1,141 @@
+section.write-board {
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+}
+
+.container {
+  width: 700px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.page-subject h3 {
+  font-size: 28px;
+  color: #333;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 1px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease;
+  overflow-wrap: break-word; 
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  height: 200px;
+}
+
+.form-group input{
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: border-color 0.3s ease;
+  overflow-wrap: break-word; 
+  white-space: pre-wrap;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #999;
+  background-color: #fff;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-buttons .btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.btn-dark {
+  background-color: #555;
+  color: #fff;
+}
+
+.btn-dark:hover {
+  background-color: #373737;
+}
+
+.btn-reset {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.btn-reset:hover {
+  background-color: #e0e0e0;
+}
+
+#camera {
+  cursor: pointer;
+}
+
+#showImg {
+  margin-top: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.star-rating {
+    direction: rtl; /* 별을 오른쪽에서 왼쪽으로 표시 */
+    display: flex;
+    justify-content: left;
+}
+
+.star-rating input {
+    display: none; /* 라디오 버튼 숨기기 */
+}
+
+.star {
+    font-size: 30px; /* 별 크기 */
+    color: #ddd; /* 비활성 상태 색상 */
+    cursor: pointer; /* 마우스 커서 변경 */
+}
+
+.star:hover,
+.star:hover ~ .star {
+    color: #f39c12; /* 마우스 오버 시 색상 변경 */
+}
+
+.star-rating input:checked ~ .star {
+    color: #f39c12; /* 선택된 별 색상 */
+}

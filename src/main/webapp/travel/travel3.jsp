@@ -22,7 +22,7 @@
 			<h2>Travel</h2>
 			<ul>
 				<li><a href="${ context }/travel/travel1.do">여행가이드</a></li>
-				<li><a href="${ context }/travel/travel2.do">맛집</a></li>
+				<li><a href="${ context }/travel/travel2.do?pg=1">맛집</a></li>
 				<li id="select"><a href="${ context }/travel/travel3.do">관광</a></li>
 				<li><a href="${ context }/travel/travel4.do">숙소</a></li>
 			</ul>

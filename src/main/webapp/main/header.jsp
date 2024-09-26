@@ -31,7 +31,7 @@
 					<a href="${ context }/travel/travel1.do">여행 가이드</a>
 				</li>
 				<li>
-					<a href="${ context }/travel/travel2.do">맛집</a>
+					<a href="${ context }/travel/travel2.do?pg=1">맛집</a>
 				</li>
 				<li>
 					<a href="${ context }/travel/travel3.do">관광</a>

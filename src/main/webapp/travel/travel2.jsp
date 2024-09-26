@@ -17,48 +17,63 @@
     <jsp:include page="../main/header.jsp" />
     
     <!-- content -->    
-   	  <div id="container">
-		<div class="snb">
-			<h2>Travel</h2>
-			<ul>
-				<li><a href="${ context }/travel/travel1.do">여행가이드</a></li>
-				<li id="select"><a href="${ context }/travel/travel2.do">맛집</a></li>
-				<li><a href="${ context }/travel/travel3.do">관광</a></li>
-				<li><a href="${ context }/travel/travel4.do">숙소</a></li>
-			</ul>
-		</div><!-- snb -->
-		
-		<div id="content">
+   	  <div id="review_container">	
+		<div id="review_content">
 			<p class="locate">
 				<a href="${ context }/index/index_main.do">Home</a> &gt;
 				<a href="${ context }/travel/travel1.do">Travel</a> &gt;
 				<strong>맛집</strong>
 			</p>
 			
-			<h2>🍔 맛집은 어디??</h2>
+			<h2>🍔 나만의 맛집 소개</h2>
 			
 			<p class="food">
 				<img src="../image/food_main.png" alt="foodMain_image">
 			</p>
 			<br/>
 			<div class="food_content">
-				<h3 id="food_header">맛집 게시판</h3>
-				<table class="custom-table">
-				  	<thead>
-					    <tr>
-					      <th class="no">번호</th>
-					      <th class="subject">제목</th>
-					      <th class="id">작성자</th>
-					      <th class="date">날짜</th>
-					    </tr>
-				  	</thead>
-					<tbody>
-					    
-				  	</tbody>
-				</table>
-				총 게시물 수: <span></span>
+				<div id="board-search">
+			        <div class="container">
+			            <div class="search-window">
+			                <form action="">
+			                    <div class="search-wrap">         
+			                        <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." value="">
+			                        <button type="submit" class="foodreview_search_submit">검색</button>
+			                    </div>
+			                </form>
+			            </div>
+			        </div>
+			    </div>
+				<ul class="food_list">
+					<c:forEach var="data" items="${ List }">
+						<li>
+							<div class="food_review_content">
+								<a href="${ context }/reviewboard/reviewboardView.do?seq=${ data.getSeq() }&pg=${pg}" class="review_a">
+									<span class="food_review_image">
+										<img alt="food_image" src="${ context }/storage/${ data.getImage1() }">
+									</span>
+									<div class="food_review_subject">
+										<p>${ data.getSubject() }</p>
+									</div>
+									<div class="mini_image">
+										<img alt="like" src="../image/like.png"/><span id="like_num">${ data.getLikes() }</span>
+										<img alt="eye" src="../image/eye.png"/><span id="view_num">${ data.getHit() }</span>
+										<img alt="reply" src="../image/reply.png"/><span id="reply_num">0</span>
+									</div>
+								</a>
+							</div>
+						</li>
+					</c:forEach>
+				</ul>
 			</div>
-			<input type="button" value="글쓰기" id="review_add_button" />
+			<c:if test="${ sessionScope.id != null }">
+				<form id="foodreview_form" action="${ context }/reviewboard/reviewboardWriteForm.do" >
+					<input type="submit" value="글쓰기" class="foodreview_add_submit" />
+				</form>
+			</c:if>
+			<div style='text-align: center; margin: 20px 0;'>
+		    	<div>${ foodreviewPaging.getPagingHTML() } </div>
+		    </div>
 		</div><!-- content -->
 	</div><!-- container -->
 	    
@@ -67,6 +82,14 @@
     
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>   
 <script type="text/javascript" src="../js/main_scrip.js"></script>
-<script type="text/javascript" src="../js/reviewList.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+});
+
+function foodreviewPaging(pg){
+	location.href = '${ pageContext.request.contextPath }/travel/travel2.do?pg='+pg;
+};
+</script>
 </body>
 </html>

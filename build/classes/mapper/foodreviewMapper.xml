@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="foodreviewSQL">
+	<resultMap id="foodreviewResultMap" type="foodreview.bean.FoodreviewDTO">
+	    <result property="seq" column="SEQ"/>
+	    <result property="reviewid" column="REVIEWID"/>
+	    <result property="reviewname" column="REVIEWNAME"/>
+	    <result property="subject" column="SUBJECT"/>
+	     <result property="content" column="CONTENT"/>
+	    <result property="ref" column="REF"/>
+	    <result property="step" column="STEP"/>
+	    <result property="grade" column="GRADE"/>
+	    <result property="likes" column="LIKES"/>
+	    <result property="hit" column="HIT"/>
+	</resultMap>
+	
+	<insert id="foodreviewWrite" parameterType="foodreview">
+		insert into odigafoodreview (seq, reviewid, reviewname, subject, content, ref, grade, image1, logtime)
+		values(seq_imageboard.nextval, 
+			   #{reviewid}, 
+			   #{reviewname}, 
+			   #{subject}, 
+			   #{content}, 
+			   seq_imageboard.nextval, 
+			   #{grade},
+			   #{image1}, 
+			   sysdate)
+	</insert>
+	
+	<select id="getTotal" resultType="int">
+		select count(*) from odigafoodreview
+	</select>
+	
+	<select id="select" parameterType="foodreview" resultMap="foodreviewResultMap">
+		SELECT seq, reviewid, reviewname, subject, content, ref, grade, image1, hit, likes
+	    FROM (
+	        SELECT rownum rn, tt.* 
+	        FROM (SELECT * FROM odigafoodreview ORDER BY seq DESC) tt
+	    )
+	    WHERE rn BETWEEN #{startNum} AND #{endNum}
+	</select>
+	
+	<update id="ContentHit" parameterType="foodreview">
+		update odigafoodreview set hit=hit+1 where seq = #{seq}
+	</update>
+	
+	<select id="contentSelect" parameterType="foodreview" resultMap="foodreviewResultMap">
+		select * from odigafoodreview where seq = #{seq}
+	</select>
+	
+	<update id="reviewReport" parameterType="member">
+		update odigamember set report_count=report_count+1 where id = #{id}
+	</update>
+	
+	<update id="reviewLike" parameterType="foodreview">
+		update odigafoodreview set likes=likes+1 where seq = #{seq}
+	</update>
+	
+</mapper>
