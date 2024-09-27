@@ -1,4 +1,4 @@
-$(function(){
+/*$(function(){
     let index = 0;
     let image = ['../image/BlueAirplaneCover.png','../image/main_b2.png','../image/main_b3.png']; //이미지 관리
 	
@@ -47,8 +47,8 @@ $(function(){
             'background-image' : 'url(' + image[index] + ')'
         });
     }
-	
+	*/
 	$('.custom-card2').click(function(){
 		window.location.href = '/ODIGA_workspace/travel/travel4.do';
 	});
-});
+/*});*/
