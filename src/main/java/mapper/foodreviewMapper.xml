@@ -58,4 +58,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update odigafoodreview set likes=likes+1 where seq = #{seq}
 	</update>
 	
+	<delete id="reviewDelete" parameterType="foodreview">
+		delete odigafoodreview where seq = #{seq}
+	</delete>
+	
+	<update id="reviewUpdate" parameterType="foodreview">
+		update odigafoodreview set subject=#{subject}, content=#{content}, grade=#{grade}, image1=#{image1}, logtime=sysdate where seq=#{seq}
+	</update>
+	
 </mapper>

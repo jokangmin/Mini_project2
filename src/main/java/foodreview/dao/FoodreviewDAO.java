@@ -84,4 +84,19 @@ public class FoodreviewDAO {
 		sqlSession.commit();
 		sqlSession.close(); 
 	}
+	
+	public void reviewDelete(int seq) { //삭제 추가 - 조강민
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("foodreviewSQL.reviewDelete", seq);
+		sqlSession.commit();
+		sqlSession.close(); 
+	}
+	
+	public void reviewUpdate(FoodreviewDTO foodreviewDTO) { //수정 추가 - 조강민
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("foodreviewSQL.reviewUpdate", foodreviewDTO);
+		sqlSession.commit();
+		sqlSession.close(); 
+	}
+	
 }

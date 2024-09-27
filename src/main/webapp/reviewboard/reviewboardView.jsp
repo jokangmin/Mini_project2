@@ -60,11 +60,12 @@
             
             <div class="board-write">
             	<c:if test="${ foodreviewDTO.getReviewid() == my_id }">
-            		<form action="${ pageContext.request.contextPath }/reviewboard/reviewboardUpdate.do">
-            		<button class="btn btn-dark" id="update_button">글수정</button>
-            		<input type="hidden" name="main_seq" value="${seq}">
+            		<form action="${ pageContext.request.contextPath }/reviewboard/reviewboardUpdateForm.do" id="update_form">
+	            		<button class="btn btn-dark" id="update_button">글수정</button>
+	            		<input type="hidden" name="seq" value="${seq}">
+	            		<input type="hidden" name="pg" value="${pg}">
 	            	</form>
-	            	<form action="${ pageContext.request.contextPath }/reviewboard/reviewboardDelete.do">
+	            	<form action="${ pageContext.request.contextPath }/reviewboard/reviewboardDelete.do" id="delete_form">
 	            		<button class="btn btn-dark" id="delete_button">글삭제</button> 
 	            		<input type="hidden" name="main_seq" value="${seq}">
 	            		<input type="hidden" name="main_id" value="${ my_id }">
@@ -93,6 +94,42 @@ $(function(){
     
     $('.star-rating').attr('data-grade', grade);
     
+    $('#update_button').click(function(){
+    	if(confirm("정말로 수정하시겠습니까??")){
+    		$('#update_form').submit();
+    	}
+    });
+    
+    $('#delete_button').click(function(){
+    	event.preventDefault();
+    	
+    	if(confirm("정말로 삭제하시겠습니까??")){
+    		$.ajax({
+    			type: 'post',
+    			url: '${ pageContext.request.contextPath }/reviewboard/reviewboardDelete.do',
+    			data: {
+                    seq: ${ seq }
+                },
+    			success: function(){
+    				alert('게시글 삭제 완료');
+    				location.href="${ pageContext.request.contextPath }/travel/travel2.do?pg=1";
+    			},
+    			error: function(e){
+    				console.log(e);
+    			}
+    		});
+    	}else {
+            event.preventDefault();
+        }
+    });
+    
+    $('#update_button').click(function(){
+    	if(confirm("정말로 수정하시겠습니까??")){
+    		$('#update_form').submit();
+    	}else {
+            event.preventDefault();
+        }
+    });
 });
 </script>
 </body>
