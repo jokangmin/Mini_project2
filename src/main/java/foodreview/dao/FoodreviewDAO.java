@@ -99,4 +99,54 @@ public class FoodreviewDAO {
 		sqlSession.close(); 
 	}
 	
+	public List<FoodreviewDTO> searchFoodReviews(String searchTerm, int startNum, int endNum) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("searchTerm", searchTerm);
+        params.put("startNum", startNum);
+        params.put("endNum", endNum);
+
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.selectList("foodreviewSQL.searchFoodReviews", params);
+        }
+    }
+
+    public int getTotalBySearchTerm(String searchTerm) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.selectOne("foodreviewSQL.getTotalBySearchTerm", searchTerm);
+        }
+    }
+
+    public List<FoodreviewDTO> searchFoodReviewsByTitle(String searchTerm, int startNum, int endNum) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("searchTerm", searchTerm);
+        params.put("startNum", startNum);
+        params.put("endNum", endNum);
+
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.selectList("foodreviewSQL.searchFoodReviewsByTitle", params);
+        }
+    }
+
+    public List<FoodreviewDTO> searchFoodReviewsByContent(String searchTerm, int startNum, int endNum) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("searchTerm", searchTerm);
+        params.put("startNum", startNum);
+        params.put("endNum", endNum);
+
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.selectList("foodreviewSQL.searchFoodReviewsByContent", params);
+        }
+    }
+    public int getTotalByTitle(String searchTerm) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.selectOne("foodreviewSQL.getTotalByTitle", searchTerm);
+        }
+    }
+
+    public int getTotalByContent(String searchTerm) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.selectOne("foodreviewSQL.getTotalByContent", searchTerm);
+        }
+    }
+	
 }

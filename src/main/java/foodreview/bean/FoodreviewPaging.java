@@ -17,17 +17,17 @@ public class FoodreviewPaging {
 		if(endPage > totalP) endPage = totalP;
 		
 		if(startPage != 1)
-			pagingHTML.append("<a class='paging' href='/Mini_project2/travel/travel2.do?pg="+ (startPage-1) + "'>이전</a>");
+			pagingHTML.append("<a class='paging' href='../travel/travel2.do?pg="+ (startPage-1) + "'>이전</a>");
 	
 		for(int i = startPage;i<=endPage;i++) {
 			if(i == currentPage)
-				pagingHTML.append("<a class='currentpaging' href='/Mini_project2/travel/travel2.do?pg="+ i + "'>" + i + "</a>");
+				pagingHTML.append("<a class='currentpaging' href='../travel/travel2.do?pg="+ i + "'>" + i + "</a>");
 			else
-				pagingHTML.append("<a class='paging' href='/Mini_project2/travel/travel2.do?pg="+ i + "'>" + i + "</a>");
+				pagingHTML.append("<a class='paging' href='../travel/travel2.do?pg="+ i + "'>" + i + "</a>");
 		}
 		
 		if(endPage < totalP)
-			pagingHTML.append("<a class='paging' href='/Mini_project2/travel/travel2.do?pg="+ (endPage+1) + "'>다음</a>");
+			pagingHTML.append("<a class='paging' href='../travel/travel2.do?pg="+ (endPage+1) + "'>다음</a>");
 	}
 
 	public int getCurrentPage() {
