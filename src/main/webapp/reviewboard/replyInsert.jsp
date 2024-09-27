@@ -9,8 +9,7 @@
 <body>
 <script type="text/javascript">
 window.onload = function(){
-	alert("게시글 신고 완료");
-	location.href = "${ pageContext.request.contextPath }/reviewboard/reviewboardView.do?seq=${ seq }&pg=${ pg }";
+	location.href = '${ pageContext.request.contextPath }/reviewboard/reviewboardView.do?seq=${ ref }&pg=${ pg }';
 }
 </script>
 </body>

@@ -1,5 +1,22 @@
-/*$(function(){
-    let index = 0;
+$(function(){
+	$(document).ready(function() {
+	    
+	    $('ul.main_menu > li > .nav_link').hide();
+
+	  
+	    $('ul.main_menu > li').hover(
+	        function() {
+	            $(this).find('.nav_link').stop(true, true).slideDown(500);
+	        },
+	        function() {
+	            $(this).find('.nav_link').stop(true, true).slideUp(500);
+	        }
+	      
+	      //stop(true, true): 깜빡임 방지
+	    );
+	});
+	
+    /*let index = 0;
     let image = ['../image/BlueAirplaneCover.png','../image/main_b2.png','../image/main_b3.png']; //이미지 관리
 	
 	showslide();
@@ -47,8 +64,8 @@
             'background-image' : 'url(' + image[index] + ')'
         });
     }
-	*/
+	
 	$('.custom-card2').click(function(){
 		window.location.href = '/ODIGA_workspace/travel/travel4.do';
-	});
-/*});*/
+	});*/
+});

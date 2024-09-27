@@ -16,6 +16,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result property="hit" column="HIT"/>
 	</resultMap>
 	
+	<resultMap id="reviewboardReplyDTO" type="foodreview.replybean.ReviewboardReplyDTO">
+	    <result property="seq" column="SEQ" />
+	    <result property="replyid" column="REPLYID" />
+	    <result property="replycontent" column="REPLYCONTENT" />
+	    <result property="ref" column="REF" />
+	    <result property="step" column="STEP" />
+	    <result property="likes" column="LIKES" />
+	</resultMap>
+	
 	<insert id="foodreviewWrite" parameterType="foodreview">
 		insert into odigafoodreview (seq, reviewid, reviewname, subject, content, ref, grade, image1, logtime)
 		values(seq_imageboard.nextval, 
@@ -143,5 +152,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE content LIKE '%' || #{searchTerm} || '%'
         ]]>
     </select>
+	
+	<!-- 댓글 부분 -->
+	<insert id="replyInsert" parameterType="foodreview.replybean.ReviewboardReplyDTO">
+		insert into odigareviewreply (seq, replyid, replycontent, ref, logtime)
+		values(odigareviewreply_seq.nextval, 
+			   #{replyid}, 
+			   #{replycontent}, 
+			   #{ref},
+			   sysdate)
+	</insert>
+	
+	<select id="getReplies" parameterType="int" resultMap="reviewboardReplyDTO">
+		select * from odigareviewreply where ref = #{seq} ORDER BY seq ASC
+	</select>
+	
+	<update id="reviewReplyLike" parameterType="foodreview.replybean.ReviewboardReplyDTO">
+		update odigareviewreply set likes=likes+1 where seq = #{seq}
+	</update>
+	
+	<delete id="reviewReplyDelete" parameterType="foodreview.replybean.ReviewboardReplyDTO">
+		delete odigareviewreply where seq = #{seq}
+	</delete>
+	<!-- 댓글 끝 -->
 	
 </mapper>

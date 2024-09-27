@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import foodreview.bean.FoodreviewDTO;
+import foodreview.replybean.ReviewboardReplyDTO;
 
 
 public class FoodreviewDAO {
@@ -148,5 +149,33 @@ public class FoodreviewDAO {
             return sqlSession.selectOne("foodreviewSQL.getTotalByContent", searchTerm);
         }
     }
+	
+	public void replyInsert(ReviewboardReplyDTO reviewboardReplyDTO) { //댓글 추가 -- 조강민 
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.insert("foodreviewSQL.replyInsert",reviewboardReplyDTO);
+    	sqlSession.commit();
+		sqlSession.close(); 
+	}
+	
+	 public List<ReviewboardReplyDTO> getReplies(int seq){ //댓글 리스트 출력
+    	SqlSession sqlSession = sqlSessionFactory.openSession();
+    	List<ReviewboardReplyDTO> replyList = sqlSession.selectList("foodreviewSQL.getReplies",seq);
+    	sqlSession.close(); 
+    	return replyList;
+    }
+	 
+	 public void reviewReplyLike(int seq) { //댓글 좋아요 - 조강민 
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("foodreviewSQL.reviewReplyLike", seq);
+		sqlSession.commit();
+		sqlSession.close(); 
+	}
+	 
+	 public void reviewReplyDelete(int seq) { //댓글 삭제 - 조강민
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("foodreviewSQL.reviewReplyDelete", seq);
+		sqlSession.commit();
+		sqlSession.close(); 
+	 }
 	
 }
