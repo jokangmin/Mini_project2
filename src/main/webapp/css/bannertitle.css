@@ -1,0 +1,73 @@
+    a {
+        display: block; /* 링크를 블록 요소로 설정 */
+        text-align: center; /* 중앙 정렬 */
+        margin: 20px 0; /* 위 아래 여백 */
+        padding: 10px 15px; /* 패딩 */
+       
+        color: white; /* 글자색 */
+        text-decoration: none; /* 밑줄 제거 */
+        border-radius: 5px; /* 모서리 둥글게 */
+        transition: background-color 0.3s; /* 배경색 전환 효과 */
+    }
+    
+        a:hover {
+        background-color: #0056b3; /* 마우스 오버 시 색상 변경 */
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffe0;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+.banner-title {
+    text-align: center;
+   
+    font-size: 24px;
+    color: #007BFF;
+    display: block; 
+}
+
+
+    .banner-menu {
+        display: flex;
+        flex-direction: row; /* 가로로 배치 */
+        justify-content: center; /* 중앙 정렬 */
+        gap: 10px; /* 버튼 간의 간격 */
+        margin: 20px 0;
+    }
+
+    .btn-modern {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 16px;
+    }
+
+    .btn-modern:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-modern:active {
+        background-color: #004085;
+        transform: translateY(1px);
+    }
+    
+#logo {
+    display: inline-block; 
+    vertical-align: middle; 
+}
+
+img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}

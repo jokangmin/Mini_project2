@@ -1,15 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+    
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/banner.css">
 <c:set var="context" value="${ pageContext.request.contextPath }" /> 
 <br/>
 <br/>
-<div class="banner_img">
-     	<a><img src="../image/left_arrow.png" alt="left" width="30" height="30"></a>
-     	<a><img src="../image/right_arrow.png" alt="right" width="30" height="30"></a>
-   
-   </div>
+
+
+<jsp:include page="../main_admin/adminMainBannerPreview.jsp" />
+
    <br/><br/>
+   
+<div class="banner-button" style="display: flex; justify-content: center; align-items: center;">
+    <c:if test="${sessionScope.id == 'admin'}">
+        <button class="modern-button" onclick="location.href='${context}/main_admin/adminBannerForm.do'">배너 관리 페이지</button>
+    </c:if>
+</div>
+   
+   
    <!-- content -->
   	<h2 id="content_text">해외 인기 여행지 🏝️</h2>
    <div class="content_div">
