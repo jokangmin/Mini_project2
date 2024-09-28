@@ -91,7 +91,7 @@
                     <c:forEach var="reply" items="${replyList}">
                         <li>
                             <div class="reply-author">
-                            	${reply.replyid}&nbsp;&nbsp;&nbsp;
+                            	<img src="../image/reply.png" style="width:20px; hiegth:12px;">&nbsp;${reply.replyid}&nbsp;&nbsp;&nbsp;
                             	<form id="report_form" action="${ context }/reviewboard/reviewboardReport.do">
 			                    	<button type="submit" class="post-report2">
 								        <img src="../image/report.png" alt="신고" style="width:15px; height:15px;">
@@ -122,26 +122,25 @@
                             
                             <!-- 답글 목록 -->
                             <ul class="reply-reply-list">
-                               <c:set var="top_ref" value="${boardDAO.getParentSeq(reply.subject, reply.id)}" />
-                               <c:forEach var="childReply" items="${boardDAO.getChildReplies(top_ref)}">
-	                               <li>
-	                                   <div class="reply-reply-author">↳ ${childReply.id}</div>
-	                                   <div class="reply-reply-content"><pre>${childReply.content}</pre></div>
-                    				   <div class="reply-reply-date">${childReply.logtime}</div>
-	                                   <!-- 답글 삭제 버튼 -->
-	                                   <button class="btn btn-danger" onclick="deleteReply('${childReply.seq}')">답글 삭제</button>
-	                               </li>
+                               <c:forEach var="replyreply" items="${replyreplyList}">
+                               		<c:if test="${reply.seq == replyreply.refref}">                    		
+	                            		<li>
+		                                   <div class="reply-reply-author">↳ &nbsp;${replyreply.replyreplyid}</div>
+		                                   <div class="reply-reply-content"><pre>${replyreply.replyreplycontent}</pre></div>
+	                    				   <div class="reply-reply-date">${replyreply.logtime}</div>
+	                    				</li>
+	                    			</c:if>
                                </c:forEach>
                             </ul>
                             
                             <!-- 답글 작성 폼 (숨김 상태) -->
                             <div id="reply-form-${reply.seq}" class="reply-reply-form" style="display:none;">
 							    <form action="${ pageContext.request.contextPath }/reviewboard/replyreplyInsert.do" method="post">
-									<input type="hidden" name="id" value="${my_id}"/>
-									<input type="hidden" name="name" value="${my_name}"/>
-									<input type="hidden" name="ref" value="${seq}"/>
-									<input type="hidden" name="step" value="2"/>
-									<textarea name="content" placeholder="답글을 입력하세요"></textarea>
+							   		<input type="hidden" name="ref" value="${seq}">
+									<input type="hidden" name="refref" value="${reply.seq}"/>
+									<input type="hidden" name="pg" value="${pg}">
+		                    		<input type="hidden" name="subject" value="답글">
+									<textarea name="replyreplycontent" placeholder="답글을 입력하세요"></textarea>
 							        <button type="submit" class="btn btn-dark">답글 작성</button>
 							    </form>
 							</div>
@@ -172,12 +171,14 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>  
 <script type="text/javascript" src="../js/main_scrip.js"></script>   
 <script type="text/javascript">   
+
 function deleteReply(replySeq){
 	$.ajax({
 		type: 'post',
 		url: '${ pageContext.request.contextPath }/reviewboard/replyDelete.do',
 		data: {
-            seq: replySeq
+            seq: replySeq,
+            parent_seq: ${ seq }
         },
 		success: function(){
 			alert('댓글 삭제 완료');

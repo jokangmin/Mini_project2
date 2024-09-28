@@ -11,6 +11,7 @@ import com.control.CommandProcess;
 import foodreview.bean.FoodreviewDTO;
 import foodreview.dao.FoodreviewDAO;
 import foodreview.replybean.ReviewboardReplyDTO;
+import foodreview.replyreplybean.ReviewboardReplyreplyDTO;
 
 public class ReviewboardViewService implements CommandProcess{
 
@@ -37,6 +38,8 @@ public class ReviewboardViewService implements CommandProcess{
 		
 		List<ReviewboardReplyDTO> replyList = foodreviewDAO.getReplies(seq1);
 		
+		List<ReviewboardReplyreplyDTO> replyreplyList = foodreviewDAO.getreplyreplyReplies(seq1);
+		
 		HttpSession session = request.getSession();
 		
 		String id = (String)session.getAttribute("id");
@@ -47,6 +50,7 @@ public class ReviewboardViewService implements CommandProcess{
 		request.setAttribute("my_name", name);
 		request.setAttribute("seq", seq1);
 		request.setAttribute("replyList", replyList);
+		request.setAttribute("replyreplyList", replyreplyList);
 		request.setAttribute("foodreviewDTO", foodreviewDTO);
 		request.setAttribute("foodreviewDAO", foodreviewDAO);
 		

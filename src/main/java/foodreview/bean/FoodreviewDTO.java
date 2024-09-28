@@ -14,13 +14,15 @@ public class FoodreviewDTO {
 	private int likes;
 	private int hit;
 	private String image1;
+	private int replycount;
 	private Date logtime;
 	
 	public FoodreviewDTO() {}
 	
+	
 
 	public FoodreviewDTO(int seq, String reviewid, String reviewname, String subject, String content, int ref, int step,
-			int grade, int likes, int hit, String image1, Date logtime) {
+			int grade, int likes, int hit, String image1, int replycount, Date logtime) {
 		this.seq = seq;
 		this.reviewid = reviewid;
 		this.reviewname = reviewname;
@@ -32,17 +34,28 @@ public class FoodreviewDTO {
 		this.likes = likes;
 		this.hit = hit;
 		this.image1 = image1;
+		this.replycount = replycount;
 		this.logtime = logtime;
 	}
-
-
 	
+
 
 	@Override
 	public String toString() {
 		return "FoodreviewDTO [seq=" + seq + ", reviewid=" + reviewid + ", reviewname=" + reviewname + ", subject="
 				+ subject + ", content=" + content + ", ref=" + ref + ", step=" + step + ", grade=" + grade + ", likes="
-				+ likes + ", hit=" + hit + ", image1=" + image1 + ", logtime=" + logtime + "]";
+				+ likes + ", hit=" + hit + ", image1=" + image1 + ", replycount=" + replycount + ", logtime=" + logtime
+				+ "]";
+	}
+
+
+	public int getReplycount() {
+		return replycount;
+	}
+
+
+	public void setReplycount(int replycount) {
+		this.replycount = replycount;
 	}
 
 

@@ -36,6 +36,8 @@ public class ReviewboardReplyService implements CommandProcess {
 		
 		foodreviewDAO.replyInsert(reviewboardReplyDTO);
 		
+		foodreviewDAO.replycount(get_ref);
+		
 		request.setAttribute("ref", get_ref);
 		request.setAttribute("pg", pgInt);
 		

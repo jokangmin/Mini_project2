@@ -37,6 +37,7 @@
                     <div class="container">
                         <div class="search-window">
                             <form action="${ context }/travel/travel2.do" method="GET">
+                            	<input type="hidden" name="pg" value="1">
                                 <div class="search-wrap" style="display: flex; align-items: center; gap: 10px; width: 100%;">
 								    <select name="searchType" id="searchType" style="height: 40px; padding: 7px 14px; border: 1px solid #ccc; border-radius: 4px;">
 								        <option value="title">제목</option>
@@ -72,7 +73,7 @@
 						                        <div class="mini_image">
 						                            <img alt="like" src="../image/like.png"/><span id="like_num">${data.likes}</span>
 						                            <img alt="eye" src="../image/eye.png"/><span id="view_num">${data.hit}</span>
-						                            <img alt="reply" src="../image/reply.png"/><span id="reply_num">0</span>
+						                            <img alt="reply" src="../image/reply.png"/><span id="reply_num">${data.replycount}</span>
 						                        </div>
 						                    </a>
 						                </div>
@@ -97,7 +98,7 @@
 				                            <div class="mini_image">
 				                                <img alt="like" src="../image/like.png"/><span id="like_num">${data.likes}</span>
 				                                <img alt="eye" src="../image/eye.png"/><span id="view_num">${data.hit}</span>
-				                                <img alt="reply" src="../image/reply.png"/><span id="reply_num">0</span>
+				                                <img alt="reply" src="../image/reply.png"/><span id="reply_num">${data.replycount}</span>
 				                            </div>
 				                        </a>
 				                    </div>

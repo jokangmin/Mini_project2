@@ -25,6 +25,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result property="likes" column="LIKES" />
 	</resultMap>
 	
+	<resultMap id="reviewboardReplyreplyDTO" type="foodreview.replyreplybean.ReviewboardReplyreplyDTO">
+	    <result property="seq" column="SEQ" />
+	    <result property="replyreplyid" column="REPLYREPLYID" />
+	    <result property="replyreplycontent" column="REPLYREPLYCONTENT" />
+	    <result property="ref" column="REF" />
+	    <result property="step" column="STEP" />
+	</resultMap>
+	
 	<insert id="foodreviewWrite" parameterType="foodreview">
 		insert into odigafoodreview (seq, reviewid, reviewname, subject, content, ref, grade, image1, logtime)
 		values(seq_imageboard.nextval, 
@@ -43,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="select" parameterType="foodreview" resultMap="foodreviewResultMap">
-		SELECT seq, reviewid, reviewname, subject, content, ref, grade, image1, hit, likes
+		SELECT seq, reviewid, reviewname, subject, content, ref, grade, image1, hit, likes, replycount
 	    FROM (
 	        SELECT rownum rn, tt.* 
 	        FROM (SELECT * FROM odigafoodreview ORDER BY seq DESC) tt
@@ -163,6 +171,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			   sysdate)
 	</insert>
 	
+	<update id="replycount" parameterType="foodreview" >
+		update odigafoodreview set replycount=replycount+1 where seq = #{seq}
+	</update>
+	
+	<update id="replycountDown" parameterType="foodreview" >
+		update odigafoodreview set replycount=replycount-1 where seq = #{seq}
+	</update>
+	
 	<select id="getReplies" parameterType="int" resultMap="reviewboardReplyDTO">
 		select * from odigareviewreply where ref = #{seq} ORDER BY seq ASC
 	</select>
@@ -174,6 +190,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="reviewReplyDelete" parameterType="foodreview.replybean.ReviewboardReplyDTO">
 		delete odigareviewreply where seq = #{seq}
 	</delete>
+	
+	<delete id="ReplyParentDelete" parameterType="foodreview.replybean.ReviewboardReplyDTO">
+		delete odigareviewreply where ref = #{ref}
+	</delete>
+	
+	<delete id="ReplyreplyParentDelete" parameterType="foodreview.replybean.ReviewboardReplyDTO">
+		delete odigareplyreply where ref = #{ref}
+	</delete>
+	
+	<delete id="ReplyreplyParentDelete_reply" parameterType="foodreview.replybean.ReviewboardReplyDTO">
+		delete odigareplyreply where refref = #{refref}
+	</delete>
 	<!-- 댓글 끝 -->
+	
+	<!-- 대댓글 부분 -->
+	<insert id="replyreplyInsert" parameterType="foodreview.replyreplybean.ReviewboardReplyreplyDTO">
+		insert into odigareplyreply (seq, replyreplyid, replyreplycontent, ref, logtime, refref)
+		values(odigareplyreply_seq.nextval, 
+			   #{replyreplyid}, 
+			   #{replyreplycontent}, 
+			   #{ref},
+			   sysdate,
+			   #{refref})
+	</insert>
+	
+	<select id="getreplyreplyReplies" parameterType="foodreview.replyreplybean.ReviewboardReplyreplyDTO" resultMap="reviewboardReplyreplyDTO">
+		select * from odigareplyreply where ref = #{ref} ORDER BY seq ASC
+	</select>
 	
 </mapper>

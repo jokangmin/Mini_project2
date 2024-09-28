@@ -47,12 +47,11 @@
             'background-image' : 'url(' + image[index] + ')'
         });
     }
+	});*/
 	
 	$('.custom-card2').click(function(){
 		window.location.href = '/ODIGA_workspace/travel/travel4.do';
 	});
-
-	});*/
 	
 	$(document).ready(function() {
 	    

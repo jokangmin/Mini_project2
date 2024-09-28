@@ -57,11 +57,13 @@
                 <div class="form-group">
                     <label for="subject">제목</label>
                     <input type="text" id="subject" name="subject">
+                    <div id="check_subject"></div>
                 </div>
                 
                 <div class="form-group">
                     <label for="reviewcontent">내용</label>
                     <textarea id="reviewcontent"  name="content"></textarea>
+                    <div id="check_content"></div>
                 </div>
 				
              	<div class="form-group">
@@ -105,22 +107,44 @@ function readURL(input){
 }
 
 $('#foodreviewUpdateButton').click(function(){
-	let formData = new FormData($('#foodreviewUpdateForm')[0]);
-	$.ajax({
-		type: 'post',
-		encType: 'multipart/form-data',
-		processData: false,
-		contentType: false,
-		url: '${ pageContext.request.contextPath }/reviewboard/reviewboardUpdate.do',
-		data: formData,
-		success: function(){
-			alert('리뷰 수정 완료!');
-			location.href="${ pageContext.request.contextPath }/reviewboard/reviewboardView.do?seq=${seq}&pg=${pg}";
-		},
-		error: function(e){
-			console.log(e);
-		}
-	});
+	$('#check_content').empty();
+	$('#check_subject').empty();
+	if($('#subject').val().trim() !== "" && $('#reviewcontent').val().trim() !== ""){
+		let formData = new FormData($('#foodreviewUpdateForm')[0]);
+		$.ajax({
+			type: 'post',
+			encType: 'multipart/form-data',
+			processData: false,
+			contentType: false,
+			url: '${ pageContext.request.contextPath }/reviewboard/reviewboardUpdate.do',
+			data: formData,
+			success: function(){
+				alert('리뷰 수정 완료!');
+				location.href="${ pageContext.request.contextPath }/reviewboard/reviewboardView.do?seq=${seq}&pg=${pg}";
+			},
+			error: function(e){
+				console.log(e);
+			}
+		});
+	}else if($('#subject').val().trim() !== "" && $('#reviewcontent').val().trim() === ""){
+		$('#check_content').text("내용을 입력해주세요.");
+		$('#reviewcontent').focus();
+	}else if($('#subject').val().trim() === "" && $('#reviewcontent').val().trim() !== ""){
+		$('#check_subject').text("제목을 입력해주세요.");	
+		$('#subject').focus();
+	}else{
+		$('#check_content').text("내용을 입력해주세요.");
+		$('#check_subject').text("제목을 입력해주세요.");	
+		alert("제목과 내용을 모두 입력해주세요.");	
+	}
+});
+
+$('#reviewcontent').focusout(function(){
+	$('#check_content').empty();
+});
+
+$('#subject').focusout(function(){
+	$('#check_subject').empty();
 });
 
 $('.star-rating input').change(function() {

@@ -15,8 +15,10 @@ public class ReviewboardReplyDeleteService implements CommandProcess{
 		FoodreviewDAO foodreviewDAO = FoodreviewDAO.getInstance();
 		
 		String seq1 = request.getParameter("seq");
+		String seq2 = request.getParameter("parent_seq");
 		
 		int seq = 0;
+		int parent_seq = 0;
 	    if (seq1 != null && !seq1.trim().isEmpty()) {
 	        try {
 	        	seq = Integer.parseInt(seq1);
@@ -25,6 +27,15 @@ public class ReviewboardReplyDeleteService implements CommandProcess{
 	        }
 	    }
 	    
+	    if (seq2 != null && !seq2.trim().isEmpty()) {
+	        try {
+	        	parent_seq = Integer.parseInt(seq2);
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    foodreviewDAO.replycountDown(parent_seq);
+	    foodreviewDAO.ReplyreplyParentDelete_reply(seq);
 	    foodreviewDAO.reviewReplyDelete(seq);
 		
 		return "none";

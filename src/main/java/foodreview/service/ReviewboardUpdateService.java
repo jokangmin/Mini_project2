@@ -56,6 +56,9 @@ public class ReviewboardUpdateService implements CommandProcess{
 		foodreviewDTO.setSubject(subject);
 		foodreviewDTO.setContent(content);
 		foodreviewDTO.setGrade(grade);
+		if(image1 == null || image1.isEmpty()) {
+			image1 = "odiga_logo.png";
+		}
 		foodreviewDTO.setImage1(image1);
 		
 		System.out.println(foodreviewDTO.toString());

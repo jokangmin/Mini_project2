@@ -27,6 +27,8 @@ public class ReviewboardDeleteService implements CommandProcess{
 	        }
 	    }
 	    
+	    foodreviewDAO.ReplyreplyParentDelete(seq);
+	    foodreviewDAO.ReplyParentDelete(seq);
 	    foodreviewDAO.reviewDelete(seq);
 	    
 		return "none";

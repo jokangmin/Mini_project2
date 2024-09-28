@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import foodreview.bean.FoodreviewDTO;
 import foodreview.replybean.ReviewboardReplyDTO;
+import foodreview.replyreplybean.ReviewboardReplyreplyDTO;
 
 
 public class FoodreviewDAO {
@@ -177,5 +178,53 @@ public class FoodreviewDAO {
 		sqlSession.commit();
 		sqlSession.close(); 
 	 }
+	 
+	 public void ReplyParentDelete(int ref) { //부모가 삭제되었을 때 댓글 삭제 - 조강민
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("foodreviewSQL.ReplyParentDelete", ref);
+		sqlSession.commit();
+		sqlSession.close(); 
+	 }
+	 
+	 public void ReplyreplyParentDelete(int ref) { //부모가 삭제되었을 때 대댓글(덧글) 삭제 - 조강민
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("foodreviewSQL.ReplyreplyParentDelete", ref);
+		sqlSession.commit();
+		sqlSession.close(); 
+	 }
+	 
+	 public void ReplyreplyParentDelete_reply(int refref) { //부모 댓글이 삭제되었을 때 해당하는 대댓글(덧글) 삭제 - 조강민
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("foodreviewSQL.ReplyreplyParentDelete_reply", refref);
+		sqlSession.commit();
+		sqlSession.close(); 
+	 }
+	 
+	 public void replyreplyInsert(ReviewboardReplyreplyDTO reviewboardReplyreplyDTO) { //덧글(대댓글) 추가 -- 조강민 
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.insert("foodreviewSQL.replyreplyInsert",reviewboardReplyreplyDTO);
+    	sqlSession.commit();
+		sqlSession.close(); 
+	}
+	 
+	public void replycount(int seq) {	 //댓글달면 카운트 올림 - 조강민
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("foodreviewSQL.replycount",seq);
+		sqlSession.commit();
+		sqlSession.close(); 
+	}
 	
+	public void replycountDown(int seq) {	 //댓글달면 카운트 내림 - 조강민
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("foodreviewSQL.replycountDown",seq);
+		sqlSession.commit();
+		sqlSession.close(); 
+	}
+	 
+	public List<ReviewboardReplyreplyDTO> getreplyreplyReplies(int ref){ //덧글(대댓글) 리스트 출력
+    	SqlSession sqlSession = sqlSessionFactory.openSession();
+    	List<ReviewboardReplyreplyDTO> replyreplyList = sqlSession.selectList("foodreviewSQL.getreplyreplyReplies",ref);
+    	sqlSession.close(); 
+    	return replyreplyList;
+    }
 }

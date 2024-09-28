@@ -10,5 +10,10 @@ grade NUMBER DEFAULT 0,             -- 평점
 likes NUMBER DEFAULT 0,             -- 좋아요
 hit NUMBER DEFAULT 0,               -- 조회수
 image1 varchar2(200),				-- 이미지
-logtime DATE DEFAULT SYSDATE        -- 작성시간
+logtime DATE DEFAULT SYSDATE,       -- 작성시간
+replycount NUMBER DEFAULT 0			-- 댓글 갯수
 );
+
+--추가하려면
+ALTER TABLE odigafoodreview
+ADD replycount NUMBER DEFAULT 0; 
