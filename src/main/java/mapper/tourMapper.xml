@@ -1,0 +1,59 @@
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tourSQL">
+	
+	<!-- 투어 등록 -->
+	<insert id="tourWrite" parameterType="tour.bean.TourDTO">
+		insert into odigaTour(seq, tourId
+							, tourSubject
+							, description
+							, price
+							, tourImage
+							, logtime)
+						values(seq_odigaTours.NEXTVAL
+							, #{tourId}
+							, #{tourSubject}
+							, #{description}
+							, #{price}
+							, #{tourImage}
+							, (current_date))
+	</insert>
+	
+	<!-- 투어 목록 꺼내오기 -->
+	<select id="tourList" parameterType="java.util.Map" resultType="tour.bean.TourDTO">
+        select * from (
+            select rownum rnum, tour.* from odigaTour tour
+            where rownum &lt;= #{endNum}
+        ) where rnum &gt;= #{startNum}
+    </select>
+	
+	<select id="getListTotal" resultType="int">
+		select count(*) from odigaTour
+	</select>
+	
+	<delete id="deleteTour" parameterType="int">
+		delete from odigaTour where seq= #{seq}
+	</delete>
+	
+	<select id="getTourById" parameterType="int" resultType="tour.bean.TourDTO">
+    	select * from odigaTour where seq = #{seq}
+	</select>
+	
+	<update id="adjustSeq" parameterType="int">
+	    update odigaTour
+	    set seq = seq - 1
+	    where seq > #{seq}
+	</update>
+	
+	<update id="updateTour" parameterType="tour.bean.TourDTO">
+		update odigaTour 
+		set tourId=#{tourId, jdbcType=VARCHAR},
+        	tourSubject=#{tourSubject, jdbcType=VARCHAR},
+        	description=#{description, jdbcType=CLOB},
+        	price=#{price, jdbcType=VARCHAR},
+        	tourImage=#{tourImage, jdbcType=VARCHAR}
+    where seq=#{seq, jdbcType=INTEGER}
+	</update>
+	
+</mapper>

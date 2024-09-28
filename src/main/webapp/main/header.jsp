@@ -51,7 +51,7 @@
 					<a href="${ context }/flyTour/fly2.do">국내 여행</a>
 				</li>
 				<li>
-					<a href="${ context }/flyTour/tourPass.do">투어 패스</a>
+					<a href="${ context }/flyTour/tourPass.do?pg=1">투어 패스</a>
 				</li>
 			</ul>
 		</li>
@@ -66,13 +66,10 @@
 					<a href="${ context }/admin/adminMember.do">회원 관리</a>
 				</li>
 				<li>
-					<a href="#">게시판 관리</a>
+					<a href="${ context }/main_admin/adminBannerComplete.do">배너 이미지 관리</a>
 				</li>
 				<li>
-					<a href="#">문의 게시판 관리</a>
-				</li>
-				<li>
-					<a href="#">배너 이미지 관리</a>
+					<a href="${ context }/flyTour/tourListForm.do?pg=1">투어 관리</a>
 				</li>
 			</ul>
 		</li>

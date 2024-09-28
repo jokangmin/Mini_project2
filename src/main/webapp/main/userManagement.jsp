@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Member</title>
+<link rel="stylesheet" href="../css/adminMember.css">
 </head>
 <body>
 <div id="container">
@@ -26,62 +27,63 @@
         </ul>
     </div>
     
-    <h2>회원 관리</h2>
-
-    <!-- 회원 목록을 출력할 테이블 -->
-    <table border="1" cellpadding="10" cellspacing="0">
-        <thead>
-            <tr>
-                <th>이름</th>
-                <th>아이디</th>
-                <th>성별</th>
-                <th>이메일</th>
-                <th>전화번호</th>
-                <th>우편번호</th>
-                <th>주소</th>
-                <th>신고 횟수</th>
-                <th>차단 여부</th>
-                <th>가입일</th>
-                <th>관리</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            <c:forEach var="member" items="${memberList}">
-                <tr>
-                    <td>${member.name}</td>
-                    <td>${member.id}</td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${member.gender == 'M'}">남자</c:when>
-                            <c:when test="${member.gender == 'F'}">여자</c:when>
-                            <c:otherwise>기타</c:otherwise>
-                        </c:choose>
-                    </td>
-                    <td>${member.email1}@${member.email2}</td>
-                    <td>${member.tel1}-${member.tel2}-${member.tel3}</td>
-                    <td>${member.zipcode}</td>
-                    <td>${member.addr1} ${member.addr2}</td>
-                    <td>${member.report_count}</td>
-                    <td>
-                        <c:choose>
-                            <c:when test="${member.blocked == 'Y'}">차단됨</c:when>
-                            <c:when test="${member.blocked == 'N'}">정상</c:when>
-                        </c:choose>
-                    </td>
-                    <td>
-    					<fmt:formatDate value="${member.logtime}" pattern="yy/MM/dd" />
-					</td>
-
-                    <td>
-                        <input type="button" value="차단하기" class="memberBlock_Btn" data-id="${member.id}" />
-    					<input type="button" value="차단해제" class="memberUnblock_Btn" data-id="${member.id}" />
-                        </a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+    <div id="listTable">
+		<h2>회원 관리</h2>
+	    <!-- 회원 목록을 출력할 테이블 -->
+	    <table border="1" cellpadding="10" cellspacing="0">
+	        <thead>
+	            <tr>
+	                <th>이름</th>
+	                <th>아이디</th>
+	                <th>성별</th>
+	                <th>이메일</th>
+	                <th>전화번호</th>
+	                <th>우편번호</th>
+	                <th>주소</th>
+	                <th>신고 횟수</th>
+	                <th>차단 여부</th>
+	                <th>가입일</th>
+	                <th>관리</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            
+	            <c:forEach var="member" items="${memberList}">
+	                <tr>
+	                    <td>${member.name}</td>
+	                    <td>${member.id}</td>
+	                    <td>
+	                        <c:choose>
+	                            <c:when test="${member.gender == 'M'}">남</c:when>
+	                            <c:when test="${member.gender == 'F'}">여</c:when>
+	                            <c:otherwise>기타</c:otherwise>
+	                        </c:choose>
+	                    </td>
+	                    <td>${member.email1}@${member.email2}</td>
+	                    <td>${member.tel1}-${member.tel2}-${member.tel3}</td>
+	                    <td>${member.zipcode}</td>
+	                    <td>${member.addr1} ${member.addr2}</td>
+	                    <td>${member.report_count}</td>
+	                    <td>
+	                        <c:choose>
+	                            <c:when test="${member.blocked == 'Y'}">차단됨</c:when>
+	                            <c:when test="${member.blocked == 'N'}">정상</c:when>
+	                        </c:choose>
+	                    </td>
+	                    <td>
+	    					<fmt:formatDate value="${member.logtime}" pattern="yy/MM/dd" />
+						</td>
+	
+	                    <td>
+	                        <input type="button" value="차단하기" class="memberBlock_Btn" data-id="${member.id}" />
+	    					<input type="button" value="차단해제" class="memberUnblock_Btn" data-id="${member.id}" />
+	                        </a>
+	                    </td>
+	                </tr>
+	            </c:forEach>
+	        </tbody>
+	    </table>
+    </div>
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>   
 <script type="text/javascript">
