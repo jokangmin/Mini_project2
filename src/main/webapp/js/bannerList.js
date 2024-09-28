@@ -3,11 +3,6 @@ function repostImage() {
    
     $('#imageContainer').empty();
     
-    $('#imageContainer').css({
-        display: 'flex',
-        flexWrap: 'wrap', 
-        alignItems: 'center' 
-    });
     
     $('input:checkbox[name=seq]:checked').each(function() {
     	
@@ -20,8 +15,8 @@ function repostImage() {
     	var imageUrl = "https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-133/storage/"+image1;
    
         var img = $('<img>').attr('src', imageUrl).css({
-            width: '70px',
-            height: '70px',
+            width: '200px',
+            height: 'auto',
             marginRight: '20px'
         });
      	
@@ -152,7 +147,7 @@ function unloadBanner3() {
 
 
    function loadBanner3(pg = 1) {
-	$('#bannerList').empty();
+	$('#bannerList3').empty();
        // 기본적으로 pg 값을 1로 설정 (처음 로드할 때 사용)
        $('#bannerList3').load(`imagebannerboardList.do?pg=${pg}&ajax=1`);
    }
@@ -165,6 +160,17 @@ function unloadBanner3() {
        const pg = $(this).data('pg'); // 클릭한 페이지 번호 가져오기
        loadBanner3(pg); // 해당 페이지 번호로 AJAX 요청
    });
+   
+
+      function uploadBanner3(pg = 1) {
+   	$('#bannerList3').empty();
+          // 기본적으로 pg 값을 1로 설정 (처음 로드할 때 사용)
+          $('#bannerList3').load(`adminBannerInsertForm.do`);
+      }
+	
+   
+   
+   
 
 
 function repostImage() {
@@ -237,6 +243,10 @@ function AddImage() {
 
 
 
+function loadBannerMain() {
+    $('#bannerList3').empty(); 
+    $('#bannerList3').load('../main_admin/adminBannerForm.jsp'); 
+}
 
 	
 	

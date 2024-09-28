@@ -16,7 +16,7 @@
 
     body {
         font-family: Arial, sans-serif;
-        background-color: #ffffe0;
+        background-color: rgb(255, 255, 255);
         color: #333;
         margin: 0;
         padding: 20px;
@@ -31,13 +31,16 @@
 }
 
 
-    .banner-menu {
-        display: flex;
-        flex-direction: row; /* 가로로 배치 */
-        justify-content: center; /* 중앙 정렬 */
-        gap: 10px; /* 버튼 간의 간격 */
-        margin: 20px 0;
-    }
+.banner-menu {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center; 
+    gap: 10px; 
+    margin: 50px 20px 20px; 
+    margin-left: 10%; 
+    font-size: 16px;
+    font-weight: bold;
+}
 
     .btn-modern {
         background-color: #007BFF;
@@ -48,6 +51,7 @@
         cursor: pointer;
         transition: background-color 0.3s;
         font-size: 16px;
+        margin: 10px;
     }
 
     .btn-modern:hover {
@@ -64,10 +68,10 @@
     vertical-align: middle; 
 }
 
-img {
+/* img {
     width: 100px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
-}
+} */

@@ -31,7 +31,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function bannerlist() {
-            $("#bannerContainer").load("imagebannerboardList.jsp"); // Load content dynamically
+            $("#bannerContainer").load("imagebannerboardList.jsp"); 
         }
     </script>
 </body>

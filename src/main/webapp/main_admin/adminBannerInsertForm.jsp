@@ -11,17 +11,13 @@
 
 </head>
 <body>
-
-	
-		<jsp:include page="adminBannerForm.jsp" />
-		
-		
+			
 			<form id="imageboardWriteForm">
 				<table border="1">
 					<tr>
 			        	<th width="100">이미지 id</th>
 				        <td>
-				            <input type="text" id="imageId" name="imageId" size="50">
+				            <input type="text" id="imageId" name="imageId" size="50" >
 				            <div id="subjectDiv"></div>
 				        </td>
 			    	</tr>
@@ -37,7 +33,7 @@
 			    	<tr>
 			        	<th width="100">광고단가</th>
 				        <td>
-				            <input type="text" id="imagePrice" name="imagePrice" size="50">
+				            <input type="text" id="imagePrice" name="imagePrice" size="50" >
 				            <div id="imagePriceDiv"></div>
 				        </td>
 			    	</tr>
@@ -45,7 +41,7 @@
 			    	<tr>
 			        	<th width="100">광고시간</th>
 				        <td>
-				            <input type="text" id="imageQty" name="imageQty" size="50">
+				            <input type="text" id="imageQty" name="imageQty" size="50" >
 				            <div id="imageQtyDiv"></div>
 				        </td>
 			    	</tr>
@@ -71,8 +67,8 @@
 				        <td colspan="4" align="center">
 				        	<input type="button" class="modern_button" value="이미지 등록" id="imageboardWriteBtn">
 				            <input type="reset"  class="modern_button" value="다시작성">
-				            <input type="button"  id="load" class="modern_button" value="배너목록보기" onclick="loadBanner2()">
-				            <input type="button"  id="unload" class="modern_button" value="배너목록접기" onclick="unloadBanner2()">
+				            <input type="button"  id="load" class="modern_button" value="배너목록" onclick="loadBanner2()">
+				            <input type="button"  id="unload" class="modern_button" value="목록접기" onclick="unloadBanner2()">
 				        </td>
 				    </tr>
 				</table>
@@ -109,6 +105,11 @@ function readURL(input){
 $('#imageboardWriteBtn').click(function(){
 	let formData = new FormData($('#imageboardWriteForm')[0]);
 	
+
+		
+		
+
+	
 	$.ajax({
 		type: 'post',
 		enctype: 'multipart/form-data',
@@ -121,7 +122,7 @@ $('#imageboardWriteBtn').click(function(){
 	    $('#imageboardWriteForm')[0].reset();
 		},
 		error: function(e){
-			console.log(e);
+			alert("빈칸을 채워 주세요");
 		}
 	}); //$.ajax
 });

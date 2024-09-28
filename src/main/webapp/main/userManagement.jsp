@@ -22,7 +22,7 @@
             <li id="qna_manage"><a href="#">문의 게시판 관리</a></li>
         </ul>
         <ul>
-            <li id="imgboard_manage"><a href="#">배너 이미지 관리</a></li>
+            <li id="imgboard_manage"><a href="${pageContext.request.contextPath}/main_admin/adminBannerComplete.do">배너 이미지 관리</a></li>
         </ul>
     </div>
     

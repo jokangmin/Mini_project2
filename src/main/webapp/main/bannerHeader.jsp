@@ -17,11 +17,25 @@
     </c:if>
 
     <c:if test="${sessionScope.id == 'admin'}">
-        <button class="btn-modern" onclick="location.href='${context}/main_admin/adminBannerInsertForm.do'">배너 추가하기</button>
-        <button class="btn-modern" onclick="location.href='${context}/main_admin/adminMainBannerPrint.do'">메인 배너 관리</button>
-        <button class="btn-modern" onclick="location.href='${context}/member/logout.do'">관리자 로그아웃</button>
-        <button class="btn-modern" onclick="loadBanner3()">배너 목록</button> 
-        <button class="btn-modern" onclick="location.href='adminBannerForm.do'">새로고침</button>
+        <button class="btn-modern" onclick="uploadBanner3()">
+         <span style="display: inline-block;">배너</span>
+         <span style="display: inline-block;">추가</span>
+        </button>
+        
+        <button class="btn-modern" onclick="location.href='${context}/main_admin/adminMainBannerPrint.do'">
+        <span style="display: inline-block;">메인 배너</span>
+        <span style="display: inline-block;">관리</span>
+        </button>
+
+        <button class="btn-modern" onclick="loadBanner3()">
+        <span style="display: inline-block;">배너</span>
+        <span style="display: inline-block;">목록</span>
+        </button> 
+        
+        <button class="btn-modern" onclick="location.href='adminBannerComplete.do'">
+        <span style="display: inline-block;">관리자</span>
+        <span style="display: inline-block;">페이지</span>
+        </button>
     </c:if>
 </div>
 

@@ -29,28 +29,22 @@
        	}
        	
        	
-       #tdimg,#tdseq {
-    padding: 15px; /* 셀 내부 여백 */
-    text-align: center; /* 중앙 정렬 */
-    vertical-align: middle; /* 세로 정렬 */
-    font-weight: bold;
-    border-left: 2px solid black; /* 셀의 왼쪽 경계선 */
-    border-right: 2px solid black; /* 셀의 오른쪽 경계선 */
-}	
-    #tdimg{
-    border-top: 2px solid black;
+       	
+    .imagebannerboardListDiv {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px auto;
+        text-align: left;
+        max-width: 1000px;
+        background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+        padding: 20px;
+        border-radius: 8px;
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
-    
-	#tdseq{
-	border-bottom: 2px solid black;
-	}
-	
-	#tdbutton{
-	border:2px solid black;
-	}
-
+       	
        
-
     </style>
 </head>
 <body>
@@ -79,9 +73,9 @@
             <tr>
         <td id = "tdbutton" colspan="10" style="text-align: center;"> <!-- 버튼이 2개인 경우 colspan 속성을 설정 -->
   <button class="modern-button" onclick="loadBanner()">배너 목록 가져오기</button> 
-    <button class="modern-button" onclick="loadMainBanner()">메인 배너 목록 미리보기</button> 
+    <button class="modern-button" onclick="loadMainBanner()">메인 배너 미리보기</button> 
     <button class="modern-button" onclick="unloadBanner()">목록 숨기기 </button> 
-<button class="modern-button" onclick="location.href='adminBannerForm.do'">배너 관리페이지</button>
+<button class="modern-button" onclick="location.href='adminBannerComplete.do'">관리자 페이지</button>
         </td>
     </tr>
     </table>

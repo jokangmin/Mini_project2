@@ -11,12 +11,7 @@
 <jsp:include page="../main_admin/adminMainBannerPreview.jsp" />
 
    <br/><br/>
-   
-<div class="banner-button" style="display: flex; justify-content: center; align-items: center;">
-    <c:if test="${sessionScope.id == 'admin'}">
-        <button class="modern-button" onclick="location.href='${context}/main_admin/adminBannerForm.do'">배너 관리 페이지</button>
-    </c:if>
-</div>
+  
    
    
    <!-- content -->

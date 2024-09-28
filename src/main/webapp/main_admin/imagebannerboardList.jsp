@@ -11,13 +11,15 @@
     <link rel="stylesheet" href="../css/banner.css">   
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/bannertitle.css"> 
-    <link rel="stylesheet" href="../css/table.css"> 
+
 <style type="text/css">
-  
+  	#imagelist{
+  		    width: 150px; 
+  	}
 
     img {
-        width: 100px; /* 이미지 고정 너비 */
-        height: auto; /* 비율 유지 */
+   
+       
         border-radius: 8px; /* 모서리 둥글게 */
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* 이미지 그림자 */
         transition: transform 0.3s; /* 이미지 확대 효과 */
@@ -28,16 +30,7 @@
         transform: scale(1.1); /* 이미지 마우스 오버 시 확대 */
     }
 
-  
-
-    .imagebannerboardListDiv {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 30px auto;
-        text-align: left;
-        max-width: 1200px; /* 최대 너비 설정 */
-    }
+ 
 
     #pagingText {
         color: black; 
@@ -67,6 +60,9 @@
     .modern-button:hover {
         background-color: #0056b3; /* 마우스 오버 시 색상 변경 */
     }
+    
+
+
 </style>
 </head>
 <body>
@@ -76,14 +72,22 @@
      </c:if>
     
     <div id="section" class="imagebannerboardListDiv">
-        <table border="1" frame="hsides" rules="rows">
+        <table border="1" frame="hsides" rules="rows" >
             <tr align="center">
-                <th width="150">이미지 선택</th>
+                <th width="100">번호</th>
                 <th width="300">이미지</th>
-                <th width="200">배너 이름</th>
-                <th width="150">광고 단가</th>
-                <th width="100">광고 시간</th>
-                <th width="200">광고 비용</th>
+                <th width="200">이름</th>
+                <th width="150">
+               <span style="display: inline-block;"> 단가</span>
+               
+                </th>
+                <th width="150">
+               <span style="display: inline-block;">시간</span>
+                 </th>
+                 
+                <th width="150">
+             <span style="display: inline-block;">비용</span>
+               </th>
                 <th width="100">삭제</th>
             </tr>
             
@@ -95,10 +99,10 @@
                             ${imagebannerboardDTO.seq}
                         </td>
                         <td align="center">
-                            <img src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-133/storage/${imagebannerboardDTO.image1}" 
-                                 alt="${imagebannerboardDTO.imageName}" width="70" height="70" />
+                            <img id="imagelist" src="https://kr.object.ncloudstorage.com/bitcamp-9th-bucket-133/storage/${imagebannerboardDTO.image1}" 
+                                 alt="${imagebannerboardDTO.imageName}" width="200" />
                         </td>
-                        <td align="center">${imagebannerboardDTO.imageName}</td>
+                        <td align="center" id="imagelist">${imagebannerboardDTO.imageName}</td>
                         <td align="center">
                             <fmt:formatNumber pattern="#,###" value="${imagebannerboardDTO.imagePrice}"/>
                         </td>
@@ -129,7 +133,7 @@
             <input class="modern-button" type="button" value="메인 배너 등록" onclick="AddImage()">
         </div>
         
-        <div id="imageContainer" style="text-align: center; margin-top: 20px; " ></div>
+        <div id="imageContainer" style=" margin-top: 20px; " ></div>
         
     </div> <!-- id="section" -->
 
