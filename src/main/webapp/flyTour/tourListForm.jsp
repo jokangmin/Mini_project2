@@ -57,6 +57,23 @@
     background-color: #00bfff;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination div {
+    padding: 10px;
+    border-radius: 5px; 
+    transition: background-color 0.3s;
+}
+
+.pagination div:hover {
+    background-color: rgba(255, 165, 0, 0.3);
+    cursor: pointer;
+}
+
 
 </style>
 </head>
@@ -116,7 +133,7 @@
 		                    <input type="hidden" name="seq" value="${tourDTO.seq}">
 		                    <div class="tour-info">
 		                        <h3>${tour.tourId}</h3>
-                                <p>${tour.description}</p>
+                                <p><pre>${tour.description}</pre></p>
                                 <p><strong>
 								    <c:choose>
 								        <c:when test="${not empty tour.price and tour.price.trim() ne ''}">
@@ -142,7 +159,7 @@
 		</div><!-- content -->
 	</div><!-- container -->
     
-    <div style="float: left; text-align: center; width: 620px; margin-top: 15px;">
+     <div class="pagination">
 		${tourListPaging.pagingHTML }
 	</div>
 	

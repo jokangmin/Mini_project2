@@ -10,7 +10,7 @@ public class TourWriteForm implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
-		return "/main/tourWriteForm.jsp";
+		return "/main/tourWriteform.jsp";
 	}
 
 }

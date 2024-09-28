@@ -97,7 +97,7 @@ $(function(){
 		else{
 			$('#check_m').empty();
 			$.ajax({
-				type : 'get',              
+				type : 'post',              
 				url : '${ pageContext.request.contextPath }/member/memberLogin.do', 
 				data: { id : $('#id').val(),
 						pwd : $('#pwd').val(),
@@ -106,7 +106,10 @@ $(function(){
 				dataType : 'text',      
 				success : function(data) {
 					data = data.trim();
-					 if(data === ""){
+					if(data === "blocked") {
+	                    $('.col-sm-12').show();
+	                    $('#check_m').text("죄송합니다. 차단된 계정입니다.");
+	                }else if(data === ""){
 						$('.col-sm-12').show();
 						$('#check_m').text("아이디 또는 비밀번호가 틀립니다.");
 					 }

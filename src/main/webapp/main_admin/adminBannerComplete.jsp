@@ -73,17 +73,14 @@
     <div id="container">
         <div class="snb">
             <ul>
-                <li id="member_manage"><a href="${pageContext.request.contextPath}/admin/adminMemberForm.do">회원 관리</a></li>
-            </ul>
-            <ul>
-                <li id="board_manage"><a href="#">게시판 관리</a></li>
-            </ul>
-            <ul>
-                <li id="qna_manage"><a href="#">문의 게시판 관리</a></li>
-            </ul>
-            <ul>
-                <li id="imgboard_manage"><a href="#">배너 이미지 관리</a></li>
-            </ul>
+            <li id="member_manage"><a href="${ context }/admin/adminMemberForm.do">회원 관리</a></li>
+        </ul>
+        <ul>
+            <li id="imgboard_manage"><a href="${ context }/main_admin/adminBannerComplete.do">배너 이미지 관리</a></li>
+        </ul>
+        <ul>
+            <li id="qna_manage"><a href="${ context }/flyTour/tourListForm.do?pg=1">투어 관리</a></li>
+        </ul>
         </div>
         
         <div class="banner-menu">

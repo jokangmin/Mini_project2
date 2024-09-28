@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
 </head>
 <body class = "main_window">
+        <!-- header -->
+    <jsp:include page="../main/header.jsp" />
     
 	<div id="container">
 		<div class="snb">
@@ -90,7 +92,11 @@
 		</div>
 	</div>
 	
+		<!--  footer -->    
+    <jsp:include page="../main/footer.jsp" />
+	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/main_scrip.js"></script>
 <script type="text/javascript">
 $('#camera').click(function(){
 	$('#tourImage').trigger('click');

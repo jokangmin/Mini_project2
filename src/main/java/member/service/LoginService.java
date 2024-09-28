@@ -21,7 +21,11 @@ public class LoginService implements CommandProcess{
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		
 		String name = memberDAO.login(id, pwd);
-		
+
+		if ("blocked".equals(name)) {
+            return name;
+        }
+
 		MemberDTO memberDTO = null;
 		String memEmail = "";
 		

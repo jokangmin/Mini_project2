@@ -59,7 +59,12 @@ public class MemberDAO {
     	SqlSession sqlSession = sqlSessionFactory.openSession();
 		String name = "";
 		MemberDTO memberDTO = sqlSession.selectOne("memberSQL.login", map);
+		
 		if(memberDTO != null) {
+			if ("Y".equals(memberDTO.getBlocked())) {
+	            sqlSession.close();
+	            return "blocked";
+	        }
 			name = memberDTO.getName();
 		}
 		sqlSession.close();

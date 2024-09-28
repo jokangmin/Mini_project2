@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="NAME" property="name" />
 		<result column="ID" property="id" />
 		<result column="PWD" property="pwd" />
+		<result column="BLOCKED" property="blocked" />
 	</resultMap>
 	
 	<!-- 회원가입 -->
