@@ -50,11 +50,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from odigafoodreview
 	</select>
 	
-	<select id="select" parameterType="foodreview" resultMap="foodreviewResultMap">
+	<select id="select" parameterType="map" resultMap="foodreviewResultMap">
 		SELECT seq, reviewid, reviewname, subject, content, ref, grade, image1, hit, likes, replycount
 	    FROM (
 	        SELECT rownum rn, tt.* 
-	        FROM (SELECT * FROM odigafoodreview ORDER BY seq DESC) tt
+	        FROM (SELECT * FROM odigafoodreview ORDER BY ${order} DESC) tt
 	    )
 	    WHERE rn BETWEEN #{startNum} AND #{endNum}
 	</select>
@@ -84,23 +84,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 검색 및 페이징 쿼리 -->
-    <select id="searchFoodReviews" parameterType="map" resultType="foodreview.bean.FoodreviewDTO">
-        <![CDATA[
-        SELECT * 
-        FROM (
-            SELECT f.*, ROWNUM AS rnum 
-            FROM (
-                SELECT * 
-                FROM odigafoodreview 
-                WHERE content LIKE '%' || #{searchTerm} || '%' 
-                   OR subject LIKE '%' || #{searchTerm} || '%' 
-                ORDER BY logtime DESC
-            ) f
-            WHERE ROWNUM <= #{endNum}
-        ) 
-        WHERE rnum > #{startNum}
-        ]]>
-    </select>
+    <select id="searchFoodReviews" parameterType="map" resultType="foodreview">
+	    <![CDATA[
+	    SELECT * 
+	    FROM (
+	        SELECT f.*, ROWNUM AS rnum 
+	        FROM (
+	            SELECT * 
+	            FROM odigafoodreview 
+	            WHERE content LIKE '%' || #{searchTerm} || '%' 
+	               OR subject LIKE '%' || #{searchTerm} || '%' 
+	            ORDER BY ${order} desc
+	        ) f
+	        WHERE ROWNUM <= #{endNum}
+	    ) 
+	    WHERE rnum > #{startNum}
+	    ]]>
+	</select>
 
     <select id="getTotalBySearchTerm" parameterType="string" resultType="int">
         <![CDATA[
@@ -110,23 +110,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
            OR subject LIKE '%' || #{searchTerm} || '%'
         ]]>
     </select>
-
-    <select id="searchFoodReviewsByTitle" parameterType="map" resultType="foodreview.bean.FoodreviewDTO">
-        <![CDATA[
-        SELECT * 
-        FROM (
-            SELECT f.*, ROWNUM AS rnum 
-            FROM (
-                SELECT * 
-                FROM odigafoodreview 
-                WHERE subject LIKE '%' || #{searchTerm} || '%' 
-                ORDER BY logtime DESC
-            ) f
-            WHERE ROWNUM <= #{endNum}
-        ) 
-        WHERE rnum > #{startNum}
-        ]]>
-    </select>
+    
+	<!-- 제목 -->
+    <select id="searchFoodReviewsByTitle" parameterType="map" resultType="foodreview">
+    <![CDATA[
+	    SELECT * 
+	    FROM (
+	        SELECT f.*, ROWNUM AS rnum 
+	        FROM (
+	            SELECT * 
+	            FROM odigafoodreview 
+	            WHERE subject LIKE '%' || #{searchTerm} || '%' 
+	            ORDER BY ${order} desc
+	        ) f
+	        WHERE ROWNUM <= #{endNum}
+	    ) 
+	    WHERE rnum > #{startNum}
+	    ]]>
+	</select>
 
     <select id="getTotalByTitle" parameterType="string" resultType="int">
         <![CDATA[
@@ -136,22 +137,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         ]]>
     </select>
 
-    <select id="searchFoodReviewsByContent" parameterType="map" resultType="foodreview.bean.FoodreviewDTO">
-        <![CDATA[
-        SELECT * 
-        FROM (
-            SELECT f.*, ROWNUM AS rnum 
-            FROM (
-                SELECT * 
-                FROM odigafoodreview 
-                WHERE content LIKE '%' || #{searchTerm} || '%' 
-                ORDER BY logtime DESC
-            ) f
-            WHERE ROWNUM <= #{endNum}
-        ) 
-        WHERE rnum > #{startNum}
-        ]]>
-    </select>
+	<!-- 내용 -->
+    <select id="searchFoodReviewsByContent" parameterType="map" resultType="foodreview">
+	    <![CDATA[
+	    SELECT * 
+	    FROM (
+	        SELECT f.*, ROWNUM AS rnum 
+	        FROM (
+	            SELECT * 
+	            FROM odigafoodreview 
+	            WHERE content LIKE '%' || #{searchTerm} || '%' 
+	            ORDER BY ${order} desc
+	        ) f
+	        WHERE ROWNUM <= #{endNum}
+	    ) 
+	    WHERE rnum > #{startNum}
+	    ]]>
+	</select>
 
     <select id="getTotalByContent" parameterType="string" resultType="int">
         <![CDATA[

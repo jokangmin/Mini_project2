@@ -47,17 +47,15 @@ public class FoodreviewDAO {
 		return gettotal;
 	}
 	 
-	 public List<FoodreviewDTO> select(int startNum, int endNum){
-    	Map<String, Integer> map = new HashMap<>();
-    	map.put("startNum",startNum);
-    	map.put("endNum",endNum);
-    	SqlSession sqlSession = sqlSessionFactory.openSession();
-    	
-    	List<FoodreviewDTO> list = sqlSession.selectList("foodreviewSQL.select", map);
-        
-		sqlSession.close();  
-    	return list;
-    }
+	 public List<FoodreviewDTO> select(int startNum, int endNum, String order) {
+			Map<String, Object> params = new HashMap<>();
+		    params.put("startNum", startNum);
+		    params.put("endNum", endNum);
+		    params.put("order", order); // order 추가
+		    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+		    	return sqlSession.selectList("foodreviewSQL.select", params);
+		    }
+		 }
 	 
 	 public void ContentHit(int seq) {
     	SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -101,11 +99,12 @@ public class FoodreviewDAO {
 		sqlSession.close(); 
 	}
 	
-	public List<FoodreviewDTO> searchFoodReviews(String searchTerm, int startNum, int endNum) {
+	public List<FoodreviewDTO> searchFoodReviews(String searchTerm, int startNum, int endNum, String order) {
         Map<String, Object> params = new HashMap<>();
         params.put("searchTerm", searchTerm);
         params.put("startNum", startNum);
         params.put("endNum", endNum);
+        params.put("order", order);
 
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             return sqlSession.selectList("foodreviewSQL.searchFoodReviews", params);
@@ -118,22 +117,24 @@ public class FoodreviewDAO {
         }
     }
 
-    public List<FoodreviewDTO> searchFoodReviewsByTitle(String searchTerm, int startNum, int endNum) {
+    public List<FoodreviewDTO> searchFoodReviewsByTitle(String searchTerm, int startNum, int endNum, String order) {
         Map<String, Object> params = new HashMap<>();
         params.put("searchTerm", searchTerm);
         params.put("startNum", startNum);
         params.put("endNum", endNum);
+        params.put("order", order);
 
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             return sqlSession.selectList("foodreviewSQL.searchFoodReviewsByTitle", params);
         }
     }
 
-    public List<FoodreviewDTO> searchFoodReviewsByContent(String searchTerm, int startNum, int endNum) {
+    public List<FoodreviewDTO> searchFoodReviewsByContent(String searchTerm, int startNum, int endNum, String order) {
         Map<String, Object> params = new HashMap<>();
         params.put("searchTerm", searchTerm);
         params.put("startNum", startNum);
         params.put("endNum", endNum);
+        params.put("order", order);
 
         try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
             return sqlSession.selectList("foodreviewSQL.searchFoodReviewsByContent", params);

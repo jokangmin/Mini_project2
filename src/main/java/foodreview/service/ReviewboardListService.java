@@ -20,6 +20,11 @@ public class ReviewboardListService implements CommandProcess {
         String pg = request.getParameter("pg");
         String searchTerm = request.getParameter("searchTerm");
         String searchType = request.getParameter("searchType"); // 검색 타입 추가
+        String order = request.getParameter("sortType");
+        
+        if(order == null || order.trim().isEmpty()) {
+       	 order = "seq";
+        }
         
         if (pg == null || pg.trim().isEmpty()) {
             pg = "1"; // 기본값 설정
@@ -35,32 +40,33 @@ public class ReviewboardListService implements CommandProcess {
         int totalA;
         List<FoodreviewDTO> list;
 
+        // 검색어가 있을 경우
         if (searchTerm != null && !searchTerm.trim().isEmpty()) {
             // 검색 타입에 따라 검색 처리
             if ("title".equals(searchType)) {
                 totalA = foodreviewDAO.getTotalByTitle(searchTerm); // 제목으로 검색
                 int endNum = pgInt * 9; 
                 int startNum = endNum - 9; 
-                list = foodreviewDAO.searchFoodReviewsByTitle(searchTerm, startNum, 9);
+                list = foodreviewDAO.searchFoodReviewsByTitle(searchTerm, startNum, endNum, order);
             } else if ("content".equals(searchType)) {
                 totalA = foodreviewDAO.getTotalByContent(searchTerm); // 내용으로 검색
                 int endNum = pgInt * 9; 
                 int startNum = endNum - 9; 
-                list = foodreviewDAO.searchFoodReviewsByContent(searchTerm, startNum, 9);
+                list = foodreviewDAO.searchFoodReviewsByContent(searchTerm, startNum, endNum, order);
             } else if ("both".equals(searchType)) {
                 totalA = foodreviewDAO.getTotalBySearchTerm(searchTerm); // 제목 + 내용으로 검색
                 int endNum = pgInt * 9; 
                 int startNum = endNum - 9; 
-                list = foodreviewDAO.searchFoodReviews(searchTerm, startNum, 9);
+                list = foodreviewDAO.searchFoodReviews(searchTerm, startNum, endNum, order);
             } else {
                 totalA = foodreviewDAO.getTotal();
-                list = foodreviewDAO.select((pgInt - 1) * 9, 9); // 기본 검색
+                list = foodreviewDAO.select((pgInt - 1) * 9, 9, order); // 기본 검색
             }
         } else {
             totalA = foodreviewDAO.getTotal();
             int endNum = pgInt * 9; 
-            int startNum = endNum - 9; 
-            list = foodreviewDAO.select(startNum, 9);
+            int startNum = endNum - (9 - 1);
+            list = foodreviewDAO.select(startNum, endNum, order);
         }
 
         FoodreviewPaging foodreviewPaging = new FoodreviewPaging();
@@ -69,14 +75,21 @@ public class ReviewboardListService implements CommandProcess {
         foodreviewPaging.setTotalA(totalA);
         foodreviewPaging.setCurrentPage(pgInt);
         
+        
+        //추가
+        foodreviewPaging.setSearchTerm(searchTerm); // searchTerm 설정
+        foodreviewPaging.setSearchType(searchType);
+        
         foodreviewPaging.makeFoodReviewPagingHTML();
-
+        
+        
         request.setAttribute("pg", pgInt);
         request.setAttribute("list", list);
         request.setAttribute("totalA", totalA);
         request.setAttribute("foodreviewPaging", foodreviewPaging);
         request.setAttribute("searchTerm", searchTerm); 
         request.setAttribute("searchType", searchType); // 검색 타입 추가
+        request.setAttribute("order", order);
 
         return "/travel/travel2.jsp";
     }

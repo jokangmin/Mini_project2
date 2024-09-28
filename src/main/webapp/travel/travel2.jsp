@@ -49,6 +49,13 @@
 								        검색
 								    </button>
 								</div>
+								<div id="order" style="margin-top: 10px;">
+							        <select name="sortType" id="sortType" onchange="this.form.submit();" style="height: 40px; padding: 7px 14px; border: 1px solid #ccc; border-radius: 4px;">
+							            <option value="seq" ${param.sortType == 'seq' ? 'selected' : ''}>최신순</option>
+							            <option value="likes" ${param.sortType == 'likes' ? 'selected' : ''}>좋아요순</option>
+							            <option value="hit" ${param.sortType == 'hit' ? 'selected' : ''}>조회순</option>
+							        </select>
+							    </div>
                             </form>
                         </div>
                     </div>
@@ -134,7 +141,14 @@ $(function(){
 });
 
 function foodreviewPaging(pg){
-    location.href = '${ pageContext.request.contextPath }/travel/travel2.do?pg='+pg;
+	var contextPath = '${pageContext.request.contextPath}';
+    var searchTerm = '${param.searchTerm}';
+    var searchType = '${param.searchType}';
+    var sortType = '${param.sortType}';
+    location.href = contextPath + '/travel/travel2.do?pg=' + pg + 
+                    (searchTerm ? '&searchTerm=' + encodeURIComponent(searchTerm) : '') +
+                    (searchType ? '&searchType=' + encodeURIComponent(searchType) : '') +
+                    (sortType ? '&sortType=' + encodeURIComponent(sortType) : '');
 };
 </script>
 </body>

@@ -44,9 +44,16 @@
                         </td>
 			            <td class="title">
 						    <c:choose>
-						        <c:when test="${qnaDTO.qnaCheck == 'T'}"> <!-- 비밀글 여부 확인 -->
-						            <img alt="자물쇠" src="../image/qna_secret.jpg" width='10' height='10' style="margin-right: 5px;">
-						            쉿 비밀입니다~!
+						        <c:when test="${qnaDTO.qnaCheck == 'T'}">
+						            <c:choose>
+						                <c:when test="${qnaDTO.qnaId == requestScope.userID || requestScope.userID == 'admin'}">
+						                    <img alt="자물쇠" src="../image/qna_secret.jpg" width='10' height='10' style="margin-right: 5px;"> ${qnaDTO.qnaUserContent}
+						                </c:when>
+						                <c:otherwise>
+						                    <img alt="자물쇠" src="../image/qna_secret.jpg" width='10' height='10' style="margin-right: 5px;">
+						                    쉿 비밀글입니다~!
+						                </c:otherwise>
+						            </c:choose>
 						        </c:when>
 						        <c:otherwise>
 						            ${qnaDTO.qnaUserContent}
