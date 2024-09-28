@@ -37,26 +37,27 @@
                     <div class="container">
                         <div class="search-window">
                             <form action="${ context }/travel/travel2.do" method="GET">
-                            	<input type="hidden" name="pg" value="1">
-                                <div class="search-wrap" style="display: flex; align-items: center; gap: 10px; width: 100%;">
-								    <select name="searchType" id="searchType" style="height: 40px; padding: 7px 14px; border: 1px solid #ccc; border-radius: 4px;">
-								        <option value="title">제목</option>
-								        <option value="content">내용</option>
-								        <option value="both">제목 + 내용</option>
-								    </select>
-								    <input id="search" type="search" name="searchTerm" placeholder="검색어를 입력해주세요." value="${param.searchTerm}" style="height: 40px; flex-grow: 1; padding: 7px 14px; border: 1px solid #ccc; border-radius: 4px;">
-								    <button type="submit" class="foodreview_search_submit" style="height: 40px; padding: 0 20px; background-color: #555; color: white; border: none; cursor: pointer; border-radius: 4px;">
-								        검색
-								    </button>
-								</div>
-								<div id="order" style="margin-top: 10px;">
+							    <input type="hidden" name="pg" value="${param.pg}"> <!-- 페이지 번호 유지 -->
+							    
+							    <div class="search-wrap" style="display: flex; align-items: center; gap: 10px; width: 100%;">
+							        <select name="searchType" id="searchType" onchange="this.form.submit();" style="height: 40px; padding: 7px 14px; border: 1px solid #ccc; border-radius: 4px;">
+							            <option value="title" ${param.searchType == 'title' ? 'selected' : ''}>제목</option>
+							            <option value="content" ${param.searchType == 'content' ? 'selected' : ''}>내용</option>
+							            <option value="both" ${param.searchType == 'both' ? 'selected' : ''}>제목 + 내용</option>
+							        </select>
+							        <input id="search" type="search" name="searchTerm" placeholder="검색어를 입력해주세요." value="${param.searchTerm}" style="height: 40px; flex-grow: 1; padding: 7px 14px; border: 1px solid #ccc; border-radius: 4px;">
+							        <button type="submit" class="foodreview_search_submit" style="height: 40px; padding: 0 20px; background-color: #555; color: white; border: none; cursor: pointer; border-radius: 4px;">
+							            검색
+							        </button>
+							    </div>
+							    <div id="order" style="margin-top: 10px;">
 							        <select name="sortType" id="sortType" onchange="this.form.submit();" style="height: 40px; padding: 7px 14px; border: 1px solid #ccc; border-radius: 4px;">
 							            <option value="seq" ${param.sortType == 'seq' ? 'selected' : ''}>최신순</option>
 							            <option value="likes" ${param.sortType == 'likes' ? 'selected' : ''}>좋아요순</option>
 							            <option value="hit" ${param.sortType == 'hit' ? 'selected' : ''}>조회순</option>
 							        </select>
 							    </div>
-                            </form>
+							</form>
                         </div>
                     </div>
                 </div>
@@ -141,14 +142,7 @@ $(function(){
 });
 
 function foodreviewPaging(pg){
-	var contextPath = '${pageContext.request.contextPath}';
-    var searchTerm = '${param.searchTerm}';
-    var searchType = '${param.searchType}';
-    var sortType = '${param.sortType}';
-    location.href = contextPath + '/travel/travel2.do?pg=' + pg + 
-                    (searchTerm ? '&searchTerm=' + encodeURIComponent(searchTerm) : '') +
-                    (searchType ? '&searchType=' + encodeURIComponent(searchType) : '') +
-                    (sortType ? '&sortType=' + encodeURIComponent(sortType) : '');
+    location.href = '${ pageContext.request.contextPath }/travel/travel2.do?pg='+pg;
 };
 </script>
 </body>

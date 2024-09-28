@@ -1,55 +1,73 @@
 package foodreview.bean;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 public class FoodreviewPaging {
     private int currentPage; // 현재 페이지
     private int pageBlock; // [이전][1][2][3][다음] 3개
     private int pageSize; // 1페이지당 게시물 수
     private int totalA; // 총 글 수
-    private StringBuffer pagingHTML;
+    private StringBuilder pagingHTML; // StringBuilder로 변경
     private String searchTerm; // 검색어 추가
     private String searchType; // 검색 타입 추가
     private String sortType; // 정렬 타입 추가
 
     public void makeFoodReviewPagingHTML() {
-        pagingHTML = new StringBuffer();
+        pagingHTML = new StringBuilder();
 
-        int totalP = (totalA + pageSize - 1) / pageSize;
-
-        int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
-        int endPage = startPage + pageBlock - 1;
-        if (endPage > totalP) endPage = totalP;
+        int totalP = (totalA + pageSize - 1) / pageSize;  // 총 페이지 수
+        int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;  // 시작 페이지
+        int endPage = startPage + pageBlock - 1;  // 끝 페이지
+        if (endPage > totalP) endPage = totalP;  // 끝 페이지가 총 페이지 수를 넘지 않도록 처리
 
         // 이전 페이지 링크
         if (startPage != 1) {
-            pagingHTML.append("<a class='paging' href='../travel/travel2.do?pg=" + (startPage - 1) 
-                              + (searchTerm != null && !searchTerm.isEmpty() ? "&searchTerm=" + searchTerm : "")
-                              + (searchType != null && !searchType.isEmpty() ? "&searchType=" + searchType : "")
-                              + (sortType != null && !sortType.isEmpty() ? "&sortType=" + sortType : "") + "'>이전</a>");
+            appendLink(startPage - 1, "이전");
         }
 
         // 페이지 번호 링크
         for (int i = startPage; i <= endPage; i++) {
             if (i == currentPage) {
-                pagingHTML.append("<a class='currentpaging' href='../travel/travel2.do?pg=" + i 
-                                  + (searchTerm != null && !searchTerm.isEmpty() ? "&searchTerm=" + searchTerm : "")
-                                  + (searchType != null && !searchType.isEmpty() ? "&searchType=" + searchType : "")
-                                  + (sortType != null && !sortType.isEmpty() ? "&sortType=" + sortType : "") + "'>" + i + "</a>");
+                pagingHTML.append("<a class='currentpaging'>" + i + "</a>");
             } else {
-                pagingHTML.append("<a class='paging' href='../travel/travel2.do?pg=" + i 
-                                  + (searchTerm != null && !searchTerm.isEmpty() ? "&searchTerm=" + searchTerm : "")
-                                  + (searchType != null && !searchType.isEmpty() ? "&searchType=" + searchType : "") 
-                                  + (sortType != null && !sortType.isEmpty() ? "&sortType=" + sortType : "") + "'>" + i + "</a>");
+                appendLink(i, String.valueOf(i));
             }
         }
 
         // 다음 페이지 링크
         if (endPage < totalP) {
-            pagingHTML.append("<a class='paging' href='../travel/travel2.do?pg=" + (endPage + 1) 
-                              + (searchTerm != null && !searchTerm.isEmpty() ? "&searchTerm=" + searchTerm : "")
-                              + (searchType != null && !searchType.isEmpty() ? "&searchType=" + searchType : "")
-                              + (sortType != null && !sortType.isEmpty() ? "&sortType=" + sortType : "") + "'>다음</a>");
+            appendLink(endPage + 1, "다음");
         }
     }
+
+    private void appendLink(int page, String label) {
+        String url = buildUrl(page);
+        pagingHTML.append("<a class='paging' href='" + url + "'>" + label + "</a>");
+    }
+
+    private String buildUrl(int page) {
+        StringBuilder urlBuilder = new StringBuilder("../travel/travel2.do?pg=" + page);
+        
+        try {
+            if (searchTerm != null && !searchTerm.isEmpty()) {
+                urlBuilder.append("&searchTerm=").append(URLEncoder.encode(searchTerm, StandardCharsets.UTF_8));
+            }
+            if (searchType != null && !searchType.isEmpty()) {
+                urlBuilder.append("&searchType=").append(URLEncoder.encode(searchType, StandardCharsets.UTF_8));
+            }
+            if (sortType != null && !sortType.isEmpty()) {
+                urlBuilder.append("&sortType=").append(URLEncoder.encode(sortType, StandardCharsets.UTF_8));
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // 인코딩 오류 처리
+        }
+
+        return urlBuilder.toString();
+    }
+
+
+
 
     // Getter 및 Setter 메서드들
     public int getCurrentPage() {
@@ -84,11 +102,11 @@ public class FoodreviewPaging {
         this.totalA = totalA;
     }
 
-    public StringBuffer getPagingHTML() {
+    public StringBuilder getPagingHTML() {
         return pagingHTML;
     }
 
-    public void setPagingHTML(StringBuffer pagingHTML) {
+    public void setPagingHTML(StringBuilder pagingHTML) {
         this.pagingHTML = pagingHTML;
     }
 
