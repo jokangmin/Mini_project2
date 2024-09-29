@@ -24,8 +24,13 @@
         </ul>
     </div>
     
+    <div id="content">
     <div id="listTable">
-		<h2>회원 관리</h2>
+    	<p class="locate">
+			<a href="${ context }/index/index_main.do">Home</a> &gt;
+			<strong>회원 관리</strong>
+		</p>
+		<h2><i class="fa fa-users" aria-hidden="true"></i> 회원 관리</h2>
 	    <!-- 회원 목록을 출력할 테이블 -->
 	    <table border="1" cellpadding="10" cellspacing="0">
 	        <thead>
@@ -51,20 +56,24 @@
 	                    <td>${member.id}</td>
 	                    <td>
 	                        <c:choose>
-	                            <c:when test="${member.gender == 'M'}">남</c:when>
-	                            <c:when test="${member.gender == 'F'}">여</c:when>
-	                            <c:otherwise>기타</c:otherwise>
+	                            <c:when test="${member.gender == 'M'}">
+            						<i class="fa fa-male" aria-hidden="true"></i>
+        						</c:when>
+        						<c:when test="${member.gender == 'F'}">
+            						<i class="fa fa-female" aria-hidden="true"></i>
+        						</c:when>
+	                            
 	                        </c:choose>
 	                    </td>
 	                    <td>${member.email1}@${member.email2}</td>
 	                    <td>${member.tel1}-${member.tel2}-${member.tel3}</td>
 	                    <td>${member.zipcode}</td>
-	                    <td>${member.addr1} ${member.addr2}</td>
+	                    <td class="addr">${member.addr1} ${member.addr2}</td>
 	                    <td>${member.report_count}</td>
 	                    <td>
 	                        <c:choose>
-	                            <c:when test="${member.blocked == 'Y'}">차단됨</c:when>
-	                            <c:when test="${member.blocked == 'N'}">정상</c:when>
+	                            <c:when test="${member.blocked == 'Y'}"><strong>O</strong></c:when>
+	                            <c:when test="${member.blocked == 'N'}"><strong>X</strong></c:when>
 	                        </c:choose>
 	                    </td>
 	                    <td>
@@ -81,6 +90,7 @@
 	        </tbody>
 	    </table>
     </div>
+    </div> <!-- content -->
 </div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>   
 <script type="text/javascript">

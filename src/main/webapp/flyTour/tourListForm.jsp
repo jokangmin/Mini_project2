@@ -74,7 +74,6 @@
     cursor: pointer;
 }
 
-
 </style>
 </head>
 <body class = "main_window">
@@ -200,7 +199,6 @@ function deleteTour(seq) {
 function updateTour(seq) {
 	location.href = "${context}/flyTour/tourUpdateForm.do?seq=" + seq;
 }
-
 
 </script>
 

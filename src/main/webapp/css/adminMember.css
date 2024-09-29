@@ -1,5 +1,5 @@
 #listTable {
-    width: 80%;
+    width: 90%; /* 테이블 폭을 조금 더 넓게 조정 */
     margin: 20px auto;
     padding: 0;
     box-shadow: none;
@@ -12,13 +12,19 @@ table {
 }
 
 th, td {
-    padding: 10px;
-    text-align: center;
+    padding: 8px; /* 패딩을 약간 줄임 */
+    text-align: center; /* 가운데 정렬 */
+    white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+    overflow: hidden; /* 넘치는 텍스트 숨기기 */
+    text-overflow: ellipsis; /* 넘치는 텍스트에 ... 표시 */
+    font-size: 14px; /* 글씨 크기를 작게 조정 */
+    border: none; /* 테두리 제거 */
 }
 
 th {
     background-color: #f2f2f2;
     font-weight: bold;
+    font-size: 16px; /* 헤더 글씨 크기를 조금 더 크게 */
 }
 
 tr:nth-child(even) {
@@ -31,9 +37,9 @@ tr:hover {
 
 .memberBlock_Btn, .memberUnblock_Btn {
     display: block;
-    width: 100px;
+    width: 80px; /* 버튼 크기를 작게 조정 */
     margin: 5px auto;
-    padding: 10px;
+    padding: 5px; /* 버튼 패딩을 작게 조정 */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -55,4 +61,14 @@ tr:hover {
 
 .memberUnblock_Btn:hover {
     background-color: #388e3c;
+}
+
+/* 주소 길이 조정 */
+.addr {
+    display: inline-block; /* 인라인 블록으로 설정 */
+    max-width: 150px; /* 최대 너비 조정 */
+    white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+    overflow: hidden; /* 넘치는 텍스트 숨기기 */
+    text-overflow: ellipsis; /* 넘치는 텍스트에 ... 표시 */
+    text-align: center; /* 가운데 정렬 추가 */
 }
