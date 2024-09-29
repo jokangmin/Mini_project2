@@ -96,7 +96,7 @@
 <script type="text/javascript" src="../js/main_scrip.js"></script>
 <script type="text/javascript">
 function tourListPaging(pg){
-	location.href = "${ context }/flyTour.TourPassService?pg=" + pg;
+	location.href = "${ context }/flyTour/tourPass.do?pg=" + pg;
 }
 </script>
 </body>

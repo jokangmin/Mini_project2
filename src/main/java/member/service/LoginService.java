@@ -23,7 +23,8 @@ public class LoginService implements CommandProcess{
 		String name = memberDAO.login(id, pwd);
 
 		if ("blocked".equals(name)) {
-            return name;
+            request.setAttribute("name", name);
+			return "/member/memberLogin.jsp";
         }
 
 		MemberDTO memberDTO = null;

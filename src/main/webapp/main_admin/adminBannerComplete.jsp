@@ -73,7 +73,7 @@
     <div id="container">
         <div class="snb">
             <ul>
-            <li id="member_manage"><a href="${ context }/admin/adminMemberForm.do">회원 관리</a></li>
+            <li id="member_manage"><a href="${ context }/admin/adminMember.do">회원 관리</a></li>
         </ul>
         <ul>
             <li id="imgboard_manage"><a href="${ context }/main_admin/adminBannerComplete.do">배너 이미지 관리</a></li>
