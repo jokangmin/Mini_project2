@@ -20,8 +20,8 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 
 public class NCPObjectStorageService  {
 
-	private String accessKey = "ncp_iam_BPASKR35jkYod2cFCvXc";
-	private String secretKey = "ncp_iam_BPKSKRTgtAjh8sBRW0laSVh3rPr20kEKoY";
+	private String accessKey = "";
+	private String secretKey = "";
 	private String regionName = "kr-standard";
 	private String endPoint = "https://kr.object.ncloudstorage.com";
 	

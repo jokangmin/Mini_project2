@@ -64,6 +64,22 @@
                             </optgroup>
                         </select>
                     </div>
+                    
+                    <!--  이메일 인증 번호 --> 
+					<button type="button" onclick="sendEmail();">이메일 인증발송</button>		
+					<div id="verificationSection" >
+				    <h2>인증번호 확인</h2>
+				    <label for="inputCode">인증번호 입력:</label>
+				    <br>
+				    <br>
+				    <input type="text" id="inputCode" class="custom-form-control2">
+				    <br>
+				    <br>
+				    <button  type="button" onclick="verifyCode();">확인</button>
+				  
+					</div>
+					<br>
+                    
                     <div class="custom-form-group2">
                         <select name="tel1" id="tel1" class="custom-form-control2">
                             <optgroup>
@@ -107,6 +123,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="../js/main_scrip.js"></script>
 <script type="text/javascript" src="../js/postapi.js"></script>
+<script type="text/javascript" src="../js/mail.js"></script>
 <script type="text/javascript">
 $(function(){
     let pw_state = false;
@@ -151,6 +168,22 @@ $(function(){
     });
     
     $('#update_button').click(function(){
+    	
+
+        var originalEmail1 = "${memberDTO.email1}";
+        var originalEmail2 = "${memberDTO.email2}";
+
+        // 현재 입력된 이메일 값
+        var currentEmail1 = $('#email1').val();
+        var currentEmail2 = $('#email2').val();
+
+        // 이메일이 변경된 경우 인증 확인
+        if ((originalEmail1 !== currentEmail1 || originalEmail2 !== currentEmail2) && !$('#inputCode').val()) {
+            alert("이메일 인증을 해주세요");
+            return;
+        }
+
+    	
         if(!$('#name').val() && !$('#pwd').val() && !$('#email1').val() 
             && !$('#email2').val() && !$('#tel2').val() && !$('#tel3').val() && !$('#zipcode').val()
             && !$('#addr1').val() && !$('#addr2').val() && !$('#pwd_check').val()){
