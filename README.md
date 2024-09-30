@@ -155,7 +155,7 @@
 
 ## 🎯 ERD
 
-![mini_project_erd](https://github.com/user-attachments/assets/c20e7ea9-c2aa-4a56-a757-ae0d68f5d66e)
+![odiga project's ERD](https://github.com/user-attachments/assets/135ca6d7-fd4d-4c44-9fc4-05a7e9c10e82)
 
 ## 🛠 설치 및 실행 방법
 
