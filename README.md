@@ -1,4 +1,4 @@
-![mini_project_erd](https://github.com/user-attachments/assets/c20e7ea9-c2aa-4a56-a757-ae0d68f5d66e)# 📚 ODIGA PROJECT
+# 📚 ODIGA PROJECT
 
 ![License](https://img.shields.io/badge/license-MIT-green)  
 ![Issues](https://img.shields.io/github/issues/yourusername/your-repo)  
@@ -16,7 +16,7 @@
 
 ## 🚀 기능
 
-###<사용자 페이지>
+<사용자 페이지>
 - ✨ 회원 페이지
   1. 회원가입시 이메일 인증
   2. 회원가입시 아이디 중복 체크, 비밀번호 동일 입력 체크
@@ -51,7 +51,7 @@
 - ✈️ 투어 페이지
   1. 투어 리스트 출력
 
-###<관리자 페이지>
+<관리자 페이지>
 - 💭 사용자 문의 게시판 관리
   1. 사용자 문의 관리자 답변
 - 👤 회원 관리
@@ -71,7 +71,7 @@
   6. 이미지 네이버클라우드 저장
 
 
-##🏋🏻 역할
+## 🙆🏼‍♂️ 역할 
 <조강민>
 - 전체 사이트 작성 ( css & DB & servlet )
 - 회원가입 ( DB & CSS & 기타 등 )
@@ -155,7 +155,7 @@
 
 ## 🎯 ERD
 
-![ERD 이미지](/Users/jokangmin/Documents/Web/mini_project_erd.png)
+![mini_project_erd](https://github.com/user-attachments/assets/c20e7ea9-c2aa-4a56-a757-ae0d68f5d66e)
 
 ## 🛠 설치 및 실행 방법
 
